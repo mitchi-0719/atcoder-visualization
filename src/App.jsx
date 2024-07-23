@@ -1,9 +1,9 @@
-function App() {
-  return (
-    <div>
-      <h1>Hello, World!</h1>
-    </div>
-  );
-}
+import { Main } from "./components/Main";
+import { Test } from "./Test";
+
+const App = () => {
+  return <Main />;
+  // return <Test />;
+};
 
 export default App;
