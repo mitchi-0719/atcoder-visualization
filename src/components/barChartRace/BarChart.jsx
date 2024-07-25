@@ -1,18 +1,23 @@
+import { useContext } from "react";
 import {
   barHeight,
   barMargin,
   labelWidth,
+  scaleHeight,
   svgHeight,
-} from "../../constant/svgConstats";
+} from "../../constant/svgConstants";
 import { textColor } from "../../style/style";
 import { EllipsisSvgText } from "./EllipsisSvgText";
+import { FilterContext } from "../../context/FilterContext";
 
 export const BarChart = ({ data, xScale }) => {
+  const { displayCount } = useContext(FilterContext);
   const { id, language, color, count, rank } = data;
-  const textY = barMargin + barHeight / 2 + 2;
+  const textY = barMargin + barHeight / 2 + scaleHeight + 2;
 
   return (
-    (barMargin + barHeight) * (rank + 1) <= svgHeight && (
+    (barMargin + barHeight) * (rank + 1) <= svgHeight &&
+    rank < displayCount && (
       <g
         key={id}
         transform={`translate(0, ${(barMargin + barHeight) * rank})`}
@@ -27,7 +32,7 @@ export const BarChart = ({ data, xScale }) => {
         />
         <rect
           x={labelWidth}
-          y={barMargin}
+          y={barMargin + scaleHeight}
           width={xScale(count)}
           height={barHeight}
           fill={color}

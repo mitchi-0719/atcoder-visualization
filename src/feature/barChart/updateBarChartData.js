@@ -1,7 +1,13 @@
-import { allLanguages } from "../../constant/languages";
+import {
+  allLanguages,
+  convertingLanguageGroup,
+  groupedLanguages,
+} from "../../constant/languages";
 
-const setNewRank = (data) => {
-  const values = allLanguages.map((label) => {
+const setNewRank = (data, isGrouping) => {
+  const values = (
+    isGrouping ? Object.keys(groupedLanguages) : allLanguages
+  ).map((label) => {
     const { count, rank, language } = data[label];
     return {
       count,
@@ -22,11 +28,18 @@ const setNewRank = (data) => {
   });
 };
 
+const getGroup = (contestData, id) => {
+  return contestData[id] && contestData[id].contestGroup;
+};
+
 export const increaseBarChartData = (
   data,
   barChartData,
   setBarChartData,
-  viewCount
+  viewCount,
+  selectContest,
+  isGrouping,
+  contestData
 ) => {
   const addition = 1000;
   for (let i = viewCount; i < viewCount + addition; i++) {
@@ -34,13 +47,24 @@ export const increaseBarChartData = (
       setBarChartData({ ...barChartData });
       return i;
     }
-    const { language } = data[i];
-    if (barChartData[language]) {
-      barChartData[language].count++;
+    const { contest_id, language } = data[i];
+    const group = getGroup(contestData, contest_id);
+    if (isGrouping) {
+      if (
+        convertingLanguageGroup[language] &&
+        barChartData[convertingLanguageGroup[language]] &&
+        selectContest[group]
+      ) {
+        barChartData[convertingLanguageGroup[language]].count++;
+      }
+    } else {
+      if (barChartData[language] && selectContest[group]) {
+        barChartData[language].count++;
+      }
     }
   }
 
-  setNewRank(barChartData);
+  setNewRank(barChartData, isGrouping);
   setBarChartData({ ...barChartData });
 
   return addition;

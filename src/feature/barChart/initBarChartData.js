@@ -1,16 +1,31 @@
-import { allLanguages } from "../../constant/languages";
+import * as d3 from "d3";
+import { allLanguages, groupedLanguages } from "../../constant/languages";
 
-export const barChartDataInit = (color) => {
+export const barChartDataInit = (isGrouping) => {
   const temp = {};
-  allLanguages.forEach((label, i) => {
-    temp[label] = {
-      id: i,
-      language: label,
-      color: color(label),
-      count: 0,
-      rank: i,
-    };
-  });
+  const color = d3.scaleOrdinal(d3.schemeCategory10);
+
+  if (isGrouping) {
+    Object.keys(groupedLanguages).forEach((label, i) => {
+      temp[label] = {
+        id: i,
+        language: label,
+        color: color(label),
+        count: 0,
+        rank: i,
+      };
+    });
+  } else {
+    allLanguages.forEach((label, i) => {
+      temp[label] = {
+        id: i,
+        language: label,
+        color: color(label),
+        count: 0,
+        rank: i,
+      };
+    });
+  }
 
   return temp;
 };

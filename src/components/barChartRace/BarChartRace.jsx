@@ -1,14 +1,22 @@
 import * as d3 from "d3";
 import { BarChart } from "./BarChart";
-import { allLanguages } from "../../constant/languages";
-import { labelWidth, svgHeight, svgWidth } from "../../constant/svgConstats";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { allLanguages, groupedLanguages } from "../../constant/languages";
+import { labelWidth, svgHeight, svgWidth } from "../../constant/svgConstants";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { barChartDataInit, increaseBarChartData } from "../../feature/barChart";
+import { Box } from "@mui/material";
+import { BarChartScale } from "./BarChartScale";
+import { BarChartSetting } from "./BarChartSetting";
+import { DataContext } from "../../context/DataContext";
+import { FilterContext } from "../../context/FilterContext";
 
-export const BarChartRace = ({ data }) => {
-  const color = d3.scaleOrdinal(d3.schemeCategory10);
+export const BarChartRace = () => {
+  const { data, contestData } = useContext(DataContext);
+  const { isGrouping, selectContest } = useContext(FilterContext);
 
-  const [barChartData, setBarChartData] = useState(barChartDataInit(color));
+  const [barChartData, setBarChartData] = useState(
+    barChartDataInit(isGrouping)
+  );
   const [viewCount, setViewCount] = useState(0);
   const viewCountRef = useRef(viewCount);
 
@@ -20,7 +28,12 @@ export const BarChartRace = ({ data }) => {
           0,
           Math.max(
             100,
-            d3.max(allLanguages, (label) => barChartData[label].count)
+            isGrouping
+              ? d3.max(
+                  Object.keys(groupedLanguages),
+                  (label) => barChartData[label].count
+                )
+              : d3.max(allLanguages, (label) => barChartData[label].count)
           ),
         ])
         .range([0, svgWidth - labelWidth - 10]),
@@ -35,30 +48,40 @@ export const BarChartRace = ({ data }) => {
         data,
         barChartData,
         setBarChartData,
-        getViewCount()
+        getViewCount(),
+        selectContest,
+        isGrouping,
+        contestData
       );
       setViewCount((prev) => prev + addition);
     }, 100);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isGrouping]);
 
-  useEffect(() => {
-    viewCountRef.current = viewCount;
+  viewCountRef.current = useMemo(() => {
+    return viewCount;
   }, [viewCount]);
 
-  const svg = useMemo(() => {
-    return allLanguages.map((label) => {
-      const key = barChartData[label].id;
-      return <BarChart key={key} data={barChartData[label]} xScale={xScale} />;
-    });
-  }, [barChartData]);
+  useEffect(() => {
+    setBarChartData(barChartDataInit(isGrouping));
+    setViewCount(0);
+  }, [isGrouping]);
 
   return (
-    <div>
+    <Box display="flex">
+      <BarChartSetting />
       <svg width={svgWidth} height={svgHeight} style={{ background: "#eee" }}>
-        {svg}
+        {(isGrouping ? Object.keys(groupedLanguages) : allLanguages).map(
+          (label) => {
+            const key = barChartData[label].id;
+            return (
+              <BarChart key={key} data={barChartData[label]} xScale={xScale} />
+            );
+          }
+        )}
+        <BarChartScale xScale={xScale} />
       </svg>
-    </div>
+    </Box>
   );
 };

@@ -21,6 +21,7 @@ export const EllipsisSvgText = ({ x, y, labelWidth, language, textColor }) => {
       setDisplayText(displayedString + ellipsis);
     }
   }, [labelWidth, language]);
+
   return (
     <text
       ref={textRef}

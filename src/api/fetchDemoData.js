@@ -13,9 +13,7 @@ export const fetchDemoData = async () => {
 
 export const fetchContestData = async () => {
   try {
-    const response = await fetch(
-      "https://kenkoooo.com/atcoder/resources/contests.json"
-    );
+    const response = await fetch("/AllContestData.json");
     if (!response.ok) {
       throw new Error("Failed to fetch demo data");
     }
