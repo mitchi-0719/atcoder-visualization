@@ -5,7 +5,7 @@ export const FilterContext = createContext("");
 
 export const FilterContextProvider = ({ children }) => {
   const [displayCount, setDisplayCount] = useState(15);
-  const [isGrouping, setIsGrouping] = useState(true);
+  const [isGrouping, setIsGrouping] = useState(false);
   const [selectContest, setSelectContest] = useState(
     groupList.reduce((acc, key) => ({ ...acc, [key]: true }), {})
   );

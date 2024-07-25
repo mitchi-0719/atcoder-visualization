@@ -27,7 +27,7 @@ export const EllipsisSvgText = ({ x, y, labelWidth, language, textColor }) => {
       ref={textRef}
       x={x}
       y={y}
-      textAnchor="start"
+      textAnchor="end"
       dominantBaseline="middle"
       fill={textColor}
       style={{

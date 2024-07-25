@@ -7,6 +7,7 @@ export const MultiAutoComplete = ({
   onChange,
   generateLabel,
   width,
+  toolTip,
 }) => {
   return (
     <Autocomplete
@@ -34,6 +35,7 @@ export const MultiAutoComplete = ({
       )}
       sx={{
         width: width,
+        bgcolor: "#fff",
       }}
     />
   );

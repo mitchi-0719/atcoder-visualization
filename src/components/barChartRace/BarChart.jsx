@@ -24,9 +24,9 @@ export const BarChart = ({ data, xScale }) => {
         style={{ transition: "all 0.5s ease" }}
       >
         <EllipsisSvgText
-          x={10}
+          x={labelWidth - 10}
           y={textY}
-          labelWidth={labelWidth - 20}
+          labelWidth={labelWidth - 10}
           language={language}
           textColor={textColor}
         />

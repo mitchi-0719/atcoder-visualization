@@ -4,11 +4,11 @@ import { allLanguages, groupedLanguages } from "../../constant/languages";
 import { labelWidth, svgHeight, svgWidth } from "../../constant/svgConstants";
 import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { barChartDataInit, increaseBarChartData } from "../../feature/barChart";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { BarChartScale } from "./BarChartScale";
-import { BarChartSetting } from "./BarChartSetting";
 import { DataContext } from "../../context/DataContext";
 import { FilterContext } from "../../context/FilterContext";
+import { SignalCellularAlt } from "@mui/icons-material";
 
 export const BarChartRace = () => {
   const { data, contestData } = useContext(DataContext);
@@ -69,9 +69,32 @@ export const BarChartRace = () => {
   }, [isGrouping]);
 
   return (
-    <Box display="flex">
-      <BarChartSetting />
-      <svg width={svgWidth} height={svgHeight} style={{ background: "#eee" }}>
+    <Box
+      paddingY={1}
+      paddingX={2}
+      border="1px solid #a0a0a0"
+      borderRadius={1}
+      bgcolor="#efefef"
+      boxShadow="0px 4px 6px rgba(0, 0, 0, 0.3)"
+    >
+      <Box
+        display="flex"
+        gap={1}
+        paddingBottom={1}
+        marginX="auto"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <SignalCellularAlt
+          sx={{
+            transform: "rotate(90deg) scaleX(-1)",
+          }}
+        />
+        <Typography component="h3" variant="h6">
+          バーチャートレース
+        </Typography>
+      </Box>
+      <svg width={svgWidth} height={svgHeight}>
         {(isGrouping ? Object.keys(groupedLanguages) : allLanguages).map(
           (label) => {
             const key = barChartData[label].id;

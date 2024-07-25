@@ -1,12 +1,10 @@
-import { useContext } from "react";
 import { Box, Typography } from "@mui/material";
-import { BarChartRace } from "./barChartRace/BarChartRace";
-import { Error, Header, Loading, Description } from "../common";
-import { DataContext } from "../context/DataContext";
+import { Header, Description } from "../common";
 import { InfoOutlined } from "@mui/icons-material";
+import { BarChartRaceMain } from "./barChartRace/BarChartRaceMain";
+import { Footer } from "../common/Footer";
 
 export const Main = () => {
-  const { isLoading, error } = useContext(DataContext);
   const descriptionTitle = "このアプリとは？";
   const descriptionText = (
     <Box>
@@ -23,22 +21,15 @@ export const Main = () => {
   );
 
   return (
-    <>
+    <Box display="flex" flexDirection="column" minHeight="100vh">
       <Header />
       <Description
         startIcon={<InfoOutlined />}
         title={descriptionTitle}
         text={descriptionText}
       />
-      {isLoading ? (
-        <Loading />
-      ) : error ? (
-        <Error />
-      ) : (
-        <Box>
-          <BarChartRace />
-        </Box>
-      )}
-    </>
+      <BarChartRaceMain />
+      <Footer />
+    </Box>
   );
 };

@@ -7,12 +7,16 @@ export const Header = () => {
 
   return (
     <Box
+      display="flex"
+      alignItems="center"
       component="header"
       height={headerHeight}
       bgcolor={headerBgColor}
-      p={0.5}
+      marginBottom={2}
+      p={1.5}
+      boxShadow={"0px 3px 4px rgba(0, 0, 0, 0.4)"}
     >
-      <Typography variant="h5" component="h1">
+      <Typography variant="h5" component="h1" sx={{ paddingLeft: 1 }}>
         {title}
       </Typography>
     </Box>

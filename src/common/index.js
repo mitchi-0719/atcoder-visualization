@@ -5,3 +5,4 @@ export * from "./Counter";
 export * from "./OnOffSwitch";
 export * from "./MultiAutoComplete";
 export * from "./Description";
+export * from "./HintToolTip";
