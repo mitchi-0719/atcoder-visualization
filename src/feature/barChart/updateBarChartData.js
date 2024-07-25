@@ -1,6 +1,6 @@
 import {
   allLanguages,
-  convertingLanguageGroup,
+  languageToGroupMap,
   groupedLanguages,
 } from "../../constant/languages";
 
@@ -51,11 +51,11 @@ export const increaseBarChartData = (
     const group = getGroup(contestData, contest_id);
     if (isGrouping) {
       if (
-        convertingLanguageGroup[language] &&
-        barChartData[convertingLanguageGroup[language]] &&
+        languageToGroupMap[language] &&
+        barChartData[languageToGroupMap[language]] &&
         selectContest[group]
       ) {
-        barChartData[convertingLanguageGroup[language]].count++;
+        barChartData[languageToGroupMap[language]].count++;
       }
     } else {
       if (barChartData[language] && selectContest[group]) {

@@ -312,7 +312,7 @@ export const groupedLanguages = {
   プロデル: ["プロデル (mono版プロデル 1.9.1182)"],
 };
 
-export const convertingLanguageGroup = {
+export const languageToGroupMap = {
   "><> (fishr 0.1.0)": "><>",
   "AWK (GNU Awk 5.0.1)": "AWK",
   "Ada (GNAT 12.2)": "Ada",
