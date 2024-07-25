@@ -1,4 +1,6 @@
-import { Autocomplete, TextField, Checkbox } from "@mui/material";
+import { Autocomplete, TextField, Checkbox, Box } from "@mui/material";
+import { HintToolTip } from "./HintToolTip";
+import { isNotNullOrUndefined } from "../feature/nullUndefined";
 
 export const MultiAutoComplete = ({
   limitTags,
@@ -7,7 +9,8 @@ export const MultiAutoComplete = ({
   onChange,
   generateLabel,
   width,
-  toolTip,
+  isDisplayToolTip,
+  generateToolTipText,
 }) => {
   return (
     <Autocomplete
@@ -21,13 +24,12 @@ export const MultiAutoComplete = ({
       value={value}
       onChange={onChange}
       renderOption={(props, option, { selected }) => (
-        <li key={option} {...props}>
-          <Checkbox
-            size="small"
-            checked={selected}
-            sx={{ padding: "3px", marginRight: "3px" }}
-          />
+        <li key={option} {...props} style={{ display: "flex", gap: 4 }}>
+          <Checkbox size="small" checked={selected} sx={{ padding: "3px" }} />
           {generateLabel(option)}
+          {isDisplayToolTip && isNotNullOrUndefined(generateToolTipText) && (
+            <HintToolTip text={generateToolTipText(option)} />
+          )}
         </li>
       )}
       renderInput={(params) => (

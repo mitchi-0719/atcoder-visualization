@@ -7,7 +7,11 @@ import {
 } from "../../common";
 import { useContext } from "react";
 import { FilterContext } from "../../context/FilterContext";
-import { displayGroupName, groupList } from "../../constant/contests";
+import {
+  contestDescription,
+  displayGroupName,
+  contests,
+} from "../../constant/contests";
 import { Settings } from "@mui/icons-material";
 
 export const BarChartSetting = () => {
@@ -64,11 +68,11 @@ export const BarChartSetting = () => {
           <Box flex={2}>
             <MultiAutoComplete
               limitTags="3"
-              options={groupList}
-              value={groupList.filter((key) => selectContest[key])}
+              options={contests}
+              value={contests.filter((key) => selectContest[key])}
               generateLabel={(option) => displayGroupName[option]}
               onChange={(_, newValue) => {
-                const updatedSelection = groupList.reduce(
+                const updatedSelection = contests.reduce(
                   (acc, key) => ({
                     ...acc,
                     [key]: newValue.includes(key),
@@ -77,12 +81,14 @@ export const BarChartSetting = () => {
                 );
                 setSelectContest(updatedSelection);
               }}
+              isDisplayToolTip
+              generateToolTipText={(option) => contestDescription[option]}
             />
           </Box>
           <Button
             onClick={() =>
               setSelectContest(
-                groupList.reduce((acc, key) => ({ ...acc, [key]: true }), {})
+                contests.reduce((acc, key) => ({ ...acc, [key]: true }), {})
               )
             }
             size="small"

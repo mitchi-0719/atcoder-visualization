@@ -1,5 +1,6 @@
 export * from "./Error";
 export * from "./Header";
+export * from "./Footer";
 export * from "./Loading";
 export * from "./Counter";
 export * from "./OnOffSwitch";

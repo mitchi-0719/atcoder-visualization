@@ -4807,542 +4807,542 @@
   "jag2012autumn": {
     "start_epoch_second": 1351994400,
     "end_epoch_second": 1352012400,
-    "contestGroup": "jag"
+    "contestGroup": "other"
   },
   "jag2013autumn": {
     "start_epoch_second": 1384048800,
     "end_epoch_second": 1384066800,
-    "contestGroup": "jag"
+    "contestGroup": "other"
   },
   "jag2013summer-day2": {
     "start_epoch_second": 1379739600,
     "end_epoch_second": 1379750400,
-    "contestGroup": "jag"
+    "contestGroup": "other"
   },
   "jag2013summer-day3": {
     "start_epoch_second": 1379811600,
     "end_epoch_second": 1379829600,
-    "contestGroup": "jag"
+    "contestGroup": "other"
   },
   "jag2013summer-day4": {
     "start_epoch_second": 1379898000,
     "end_epoch_second": 1379916000,
-    "contestGroup": "jag"
+    "contestGroup": "other"
   },
   "jag2013summer-warmingup": {
     "start_epoch_second": 1379725200,
     "end_epoch_second": 1379736000,
-    "contestGroup": "jag"
+    "contestGroup": "other"
   },
   "jag2014autumn": {
     "start_epoch_second": 1410660000,
     "end_epoch_second": 1410678000,
-    "contestGroup": "jag"
+    "contestGroup": "other"
   },
   "jag2014summer-day2": {
     "start_epoch_second": 1410570000,
     "end_epoch_second": 1410588000,
-    "contestGroup": "jag"
+    "contestGroup": "other"
   },
   "jag2014summer-day4": {
     "start_epoch_second": 1410742800,
     "end_epoch_second": 1410760800,
-    "contestGroup": "jag"
+    "contestGroup": "other"
   },
   "jag2015autumn": {
     "start_epoch_second": 1448157600,
     "end_epoch_second": 1448175600,
-    "contestGroup": "jag"
+    "contestGroup": "other"
   },
   "jag2015spring": {
     "start_epoch_second": 1429417800,
     "end_epoch_second": 1429435800,
-    "contestGroup": "jag"
+    "contestGroup": "other"
   },
   "jag2015summer-day2": {
     "start_epoch_second": 1442022000,
     "end_epoch_second": 1442040000,
-    "contestGroup": "jag"
+    "contestGroup": "other"
   },
   "jag2015summer-day3": {
     "start_epoch_second": 1442106000,
     "end_epoch_second": 1442124000,
-    "contestGroup": "jag"
+    "contestGroup": "other"
   },
   "jag2015summer-day4": {
     "start_epoch_second": 1442192400,
     "end_epoch_second": 1442210400,
-    "contestGroup": "jag"
+    "contestGroup": "other"
   },
   "jag2016-domestic": {
     "start_epoch_second": 1461474000,
     "end_epoch_second": 1461486600,
-    "contestGroup": "jag"
+    "contestGroup": "other"
   },
   "jag2016autumn": {
     "start_epoch_second": 1472954400,
     "end_epoch_second": 1472972400,
-    "contestGroup": "jag"
+    "contestGroup": "other"
   },
   "jag2017autumn": {
     "start_epoch_second": 1511064000,
     "end_epoch_second": 1511082000,
-    "contestGroup": "jag"
+    "contestGroup": "other"
   },
   "jag2017summer-day1": {
     "start_epoch_second": 1506056400,
     "end_epoch_second": 1506067200,
-    "contestGroup": "jag"
+    "contestGroup": "other"
   },
   "jag2017summer-day3": {
     "start_epoch_second": 1506214800,
     "end_epoch_second": 1506232800,
-    "contestGroup": "jag"
+    "contestGroup": "other"
   },
   "jag2018summer-day2": {
     "start_epoch_second": 1537059600,
     "end_epoch_second": 1537077600,
-    "contestGroup": "jag"
+    "contestGroup": "other"
   },
   "joi2006ho": {
     "start_epoch_second": 1136041200,
     "end_epoch_second": 1136041200,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2006yo": {
     "start_epoch_second": 1136041200,
     "end_epoch_second": 1136041200,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2007ho": {
     "start_epoch_second": 1167577200,
     "end_epoch_second": 1167577200,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2007yo": {
     "start_epoch_second": 1167577200,
     "end_epoch_second": 1167577200,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2008ho": {
     "start_epoch_second": 1199113200,
     "end_epoch_second": 1199113200,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2008yo": {
     "start_epoch_second": 1199113200,
     "end_epoch_second": 1199113200,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2009ho": {
     "start_epoch_second": 1230735600,
     "end_epoch_second": 1230735600,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2009yo": {
     "start_epoch_second": 1230735600,
     "end_epoch_second": 1230735600,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2010ho": {
     "start_epoch_second": 1262271600,
     "end_epoch_second": 1262271600,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2010yo": {
     "start_epoch_second": 1262271600,
     "end_epoch_second": 1262271600,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2011ho": {
     "start_epoch_second": 1293807600,
     "end_epoch_second": 1293807600,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2011yo": {
     "start_epoch_second": 1293807600,
     "end_epoch_second": 1293807600,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2012ho": {
     "start_epoch_second": 1325343600,
     "end_epoch_second": 1325343600,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2012yo": {
     "start_epoch_second": 1325343600,
     "end_epoch_second": 1325343600,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2013ho": {
     "start_epoch_second": 1360459800,
     "end_epoch_second": 1360474200,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2013yo": {
     "start_epoch_second": 1356966000,
     "end_epoch_second": 1356966000,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2014ho": {
     "start_epoch_second": 1388502000,
     "end_epoch_second": 1388502000,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2014yo": {
     "start_epoch_second": 1388502000,
     "end_epoch_second": 1388502000,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2015ho": {
     "start_epoch_second": 1420038000,
     "end_epoch_second": 1420038000,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2015yo": {
     "start_epoch_second": 1420038000,
     "end_epoch_second": 1420038000,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2016ho": {
     "start_epoch_second": 1451574000,
     "end_epoch_second": 1451574000,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2016yo": {
     "start_epoch_second": 1451574000,
     "end_epoch_second": 1451574000,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2017ho": {
     "start_epoch_second": 1483196400,
     "end_epoch_second": 1483196400,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2017yo": {
     "start_epoch_second": 1483196400,
     "end_epoch_second": 1483196400,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2018ho": {
     "start_epoch_second": 1518307200,
     "end_epoch_second": 1518321600,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2018yo": {
     "start_epoch_second": 1512878400,
     "end_epoch_second": 1512889200,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2019ho": {
     "start_epoch_second": 1549756800,
     "end_epoch_second": 1549771200,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2019yo": {
     "start_epoch_second": 1544328000,
     "end_epoch_second": 1544338800,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2020ho": {
     "start_epoch_second": 1581206400,
     "end_epoch_second": 1581220800,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2020yo1a": {
     "start_epoch_second": 1569042000,
     "end_epoch_second": 1569048000,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2020yo1b": {
     "start_epoch_second": 1572152400,
     "end_epoch_second": 1572158400,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2020yo1c": {
     "start_epoch_second": 1573880400,
     "end_epoch_second": 1573886400,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2020yo2": {
     "start_epoch_second": 1575777600,
     "end_epoch_second": 1575788400,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2021ho": {
     "start_epoch_second": 1613264400,
     "end_epoch_second": 1613278800,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2021yo1a": {
     "start_epoch_second": 1600491600,
     "end_epoch_second": 1600496400,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2021yo1b": {
     "start_epoch_second": 1602997200,
     "end_epoch_second": 1603002000,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2021yo1c": {
     "start_epoch_second": 1605934800,
     "end_epoch_second": 1605939600,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2021yo2": {
     "start_epoch_second": 1607832000,
     "end_epoch_second": 1607842800,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2022ho": {
     "start_epoch_second": 1644710400,
     "end_epoch_second": 1644724800,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2022yo1a": {
     "start_epoch_second": 1631941200,
     "end_epoch_second": 1631946000,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2022yo1b": {
     "start_epoch_second": 1634446800,
     "end_epoch_second": 1634451600,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2022yo1c": {
     "start_epoch_second": 1637384400,
     "end_epoch_second": 1637389200,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2022yo2": {
     "start_epoch_second": 1639281600,
     "end_epoch_second": 1639292400,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2023ho": {
     "start_epoch_second": 1676174400,
     "end_epoch_second": 1676188800,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2023yo1a": {
     "start_epoch_second": 1663390800,
     "end_epoch_second": 1663395600,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2023yo1b": {
     "start_epoch_second": 1665896400,
     "end_epoch_second": 1665901200,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2023yo1c": {
     "start_epoch_second": 1668834000,
     "end_epoch_second": 1668838800,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2023yo2": {
     "start_epoch_second": 1670731200,
     "end_epoch_second": 1670742000,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2024ho": {
     "start_epoch_second": 1707019200,
     "end_epoch_second": 1707033600,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2024yo1a": {
     "start_epoch_second": 1694840400,
     "end_epoch_second": 1694845200,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2024yo1b": {
     "start_epoch_second": 1697346000,
     "end_epoch_second": 1697350800,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2024yo1c": {
     "start_epoch_second": 1700283600,
     "end_epoch_second": 1700288400,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joi2024yo2": {
     "start_epoch_second": 1702180800,
     "end_epoch_second": 1702191600,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joig2021-open": {
     "start_epoch_second": 1619323200,
     "end_epoch_second": 1619334000,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joig2022-open": {
     "start_epoch_second": 1642910400,
     "end_epoch_second": 1642924800,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joig2023-open": {
     "start_epoch_second": 1674360000,
     "end_epoch_second": 1674374400,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joig2024-open": {
     "start_epoch_second": 0,
     "end_epoch_second": 3153600000,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joigsc2022": {
     "start_epoch_second": 1647734400,
     "end_epoch_second": 1647734400,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joigsp2023": {
     "start_epoch_second": 1679270400,
     "end_epoch_second": 1679270400,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joigsp2024": {
     "start_epoch_second": 1711065600,
     "end_epoch_second": 1711083600,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joiopen2012": {
     "start_epoch_second": 1347854400,
     "end_epoch_second": 1347872400,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joiopen2012b": {
     "start_epoch_second": 1347872400,
     "end_epoch_second": 1347890400,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joiopen2012c": {
     "start_epoch_second": 1347894000,
     "end_epoch_second": 1347912000,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joiopen2021": {
     "start_epoch_second": 1622952000,
     "end_epoch_second": 1622970000,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joiopen2022": {
     "start_epoch_second": 1656820800,
     "end_epoch_second": 1656838800,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joiopen2023": {
     "start_epoch_second": 1691208000,
     "end_epoch_second": 1691226000,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joiopen2024": {
     "start_epoch_second": 1718510400,
     "end_epoch_second": 1718528400,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joisc2007": {
     "start_epoch_second": 1167577200,
     "end_epoch_second": 1167577200,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joisc2008": {
     "start_epoch_second": 1199113200,
     "end_epoch_second": 1199113200,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joisc2009": {
     "start_epoch_second": 1230735600,
     "end_epoch_second": 1230735600,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joisc2010": {
     "start_epoch_second": 1262271600,
     "end_epoch_second": 1262271600,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joisc2011": {
     "start_epoch_second": 1293807600,
     "end_epoch_second": 1293807600,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joisc2012": {
     "start_epoch_second": 1325343600,
     "end_epoch_second": 1325343600,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joisc2013-day1": {
     "start_epoch_second": 1363739400,
     "end_epoch_second": 1363757400,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joisc2013-day2": {
     "start_epoch_second": 1363825800,
     "end_epoch_second": 1363843800,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joisc2013-day3": {
     "start_epoch_second": 1363912200,
     "end_epoch_second": 1363930200,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joisc2013-day4": {
     "start_epoch_second": 1363998600,
     "end_epoch_second": 1364016600,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joisc2014": {
     "start_epoch_second": 1388502000,
     "end_epoch_second": 1388502000,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joisc2015": {
     "start_epoch_second": 1420038000,
     "end_epoch_second": 1420038000,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joisc2016": {
     "start_epoch_second": 1451574000,
     "end_epoch_second": 1451574000,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joisc2017": {
     "start_epoch_second": 1483196400,
     "end_epoch_second": 1483196400,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joisc2018": {
     "start_epoch_second": 1521504000,
     "end_epoch_second": 1521504000,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joisc2019": {
     "start_epoch_second": 1553040000,
     "end_epoch_second": 1553040000,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joisc2020": {
     "start_epoch_second": 1584662400,
     "end_epoch_second": 1584662400,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joisc2021": {
     "start_epoch_second": 1616198400,
     "end_epoch_second": 1616198400,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joisc2022": {
     "start_epoch_second": 1647734400,
     "end_epoch_second": 1647734400,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joisp2023": {
     "start_epoch_second": 1679184000,
     "end_epoch_second": 1679184000,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "joisp2024": {
     "start_epoch_second": 1679630400,
     "end_epoch_second": 1679630400,
-    "contestGroup": "joi"
+    "contestGroup": "other"
   },
   "jrex2017": {
     "start_epoch_second": 1484980200,

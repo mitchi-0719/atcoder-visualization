@@ -1,21 +1,19 @@
-export const groupList = [
-  "abc",
-  "agc",
-  "arc",
-  "ahc",
-  "adt",
-  "joi",
-  "jag",
-  "other",
-];
+export const contests = ["abc", "arc", "agc", "ahc", "adt", "other"];
 
 export const displayGroupName = {
   abc: "ABC",
-  agc: "AGC",
   arc: "ARC",
+  agc: "AGC",
   ahc: "AHC",
   adt: "ADT",
-  joi: "JOI",
-  jag: "JAG",
   other: "その他",
+};
+
+export const contestDescription = {
+  abc: "AtCoder Beginner Contest",
+  arc: "AtCoder Regular Contest",
+  agc: "AtCoder Grand Contest",
+  ahc: "AtCoder Heuristic Contest",
+  adt: "AtCoder Daily Training",
+  other: "その他のコンテスト",
 };

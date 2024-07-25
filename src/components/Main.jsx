@@ -1,8 +1,7 @@
 import { Box, Typography } from "@mui/material";
-import { Header, Description } from "../common";
+import { Header, Description, Footer } from "../common";
 import { InfoOutlined } from "@mui/icons-material";
 import { BarChartRaceMain } from "./barChartRace/BarChartRaceMain";
-import { Footer } from "../common/Footer";
 
 export const Main = () => {
   const descriptionTitle = "このアプリとは？";
