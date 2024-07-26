@@ -3,22 +3,62 @@ import { BarChart } from "./BarChart";
 import { allLanguages, groupedLanguages } from "../../constant/languages";
 import { labelWidth, svgHeight, svgWidth } from "../../constant/svgConstants";
 import { useContext, useEffect, useMemo, useRef, useState } from "react";
-import { barChartDataInit, increaseBarChartData } from "../../feature/barChart";
+import {
+  InitializeBarChartData,
+  increaseBarChartData,
+} from "../../feature/barChart";
 import { Box, Typography } from "@mui/material";
 import { BarChartScale } from "./BarChartScale";
 import { DataContext } from "../../context/DataContext";
 import { FilterContext } from "../../context/FilterContext";
 import { SignalCellularAlt } from "@mui/icons-material";
+import { useInterval } from "../../hooks/useInterval";
+import { Loading } from "../../common";
 
 export const BarChartRace = () => {
   const { data, contestData } = useContext(DataContext);
-  const { isGrouping, selectContest } = useContext(FilterContext);
+  const {
+    isGrouping,
+    selectContest,
+    onlyDuringContest,
+    onlyRates,
+    selectRate,
+    loadingFlag,
+    setLoadingFlag,
+  } = useContext(FilterContext);
 
   const [barChartData, setBarChartData] = useState(
-    barChartDataInit(isGrouping)
+    InitializeBarChartData(isGrouping)
   );
   const [viewCount, setViewCount] = useState(0);
-  const viewCountRef = useRef(viewCount);
+
+  const callbackRef = useRef(null);
+  callbackRef.current = () => {
+    increaseBarChartData(
+      data,
+      barChartData,
+      setBarChartData,
+      viewCount,
+      setViewCount,
+      selectContest,
+      isGrouping,
+      onlyDuringContest,
+      onlyRates,
+      selectRate,
+      contestData
+    );
+  };
+
+  const delay = 100;
+  const { start, stop } = useInterval(() => callbackRef.current(), delay);
+
+  useEffect(() => {
+    stop();
+    setBarChartData(InitializeBarChartData(isGrouping));
+    setViewCount(0);
+    start();
+    setLoadingFlag(false);
+  }, [loadingFlag === true]);
 
   const xScale = useMemo(
     () =>
@@ -37,36 +77,14 @@ export const BarChartRace = () => {
           ),
         ])
         .range([0, svgWidth - labelWidth - 10]),
-    [barChartData, viewCount]
+    [barChartData]
   );
 
   useEffect(() => {
-    const getViewCount = () => viewCountRef.current;
-
-    const interval = setInterval(() => {
-      const addition = increaseBarChartData(
-        data,
-        barChartData,
-        setBarChartData,
-        getViewCount(),
-        selectContest,
-        isGrouping,
-        contestData
-      );
-      setViewCount((prev) => prev + addition);
-    }, 100);
-
-    return () => clearInterval(interval);
-  }, [isGrouping]);
-
-  viewCountRef.current = useMemo(() => {
-    return viewCount;
-  }, [viewCount]);
-
-  useEffect(() => {
-    setBarChartData(barChartDataInit(isGrouping));
-    setViewCount(0);
-  }, [isGrouping]);
+    if (viewCount > data.length) {
+      stop();
+    }
+  }, [viewCount, data.length]);
 
   return (
     <Box
@@ -94,17 +112,27 @@ export const BarChartRace = () => {
           バーチャートレース
         </Typography>
       </Box>
-      <svg width={svgWidth} height={svgHeight}>
-        {(isGrouping ? Object.keys(groupedLanguages) : allLanguages).map(
-          (label) => {
-            const key = barChartData[label].id;
-            return (
-              <BarChart key={key} data={barChartData[label]} xScale={xScale} />
-            );
-          }
-        )}
-        <BarChartScale xScale={xScale} />
-      </svg>
+      {loadingFlag ? (
+        <Box width={svgWidth}>
+          <Loading />
+        </Box>
+      ) : (
+        <svg width={svgWidth} height={svgHeight}>
+          {(isGrouping ? Object.keys(groupedLanguages) : allLanguages).map(
+            (label) => {
+              const key = barChartData[label].id;
+              return (
+                <BarChart
+                  key={key}
+                  data={barChartData[label]}
+                  xScale={xScale}
+                />
+              );
+            }
+          )}
+          <BarChartScale xScale={xScale} />
+        </svg>
+      )}
     </Box>
   );
 };

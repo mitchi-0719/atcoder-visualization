@@ -18,7 +18,7 @@ export const Counter = ({ count, setCount, max, min }) => {
       borderRadius="4px"
       padding={0.5}
       width="fit-content"
-      bgcolor="#f9f9f9"
+      bgcolor="#fff"
     >
       <Box>
         <Button

@@ -1,8 +1,10 @@
-import { Autocomplete, TextField, Checkbox, Box } from "@mui/material";
+import { Autocomplete, TextField, Checkbox } from "@mui/material";
 import { HintToolTip } from "./HintToolTip";
 import { isNotNullOrUndefined } from "../feature/nullUndefined";
+import { omitKey } from "../feature/omitKey";
 
 export const MultiAutoComplete = ({
+  disabled,
   limitTags,
   options,
   value,
@@ -14,6 +16,7 @@ export const MultiAutoComplete = ({
 }) => {
   return (
     <Autocomplete
+      disabled={disabled}
       multiple
       noOptionsText="候補なし"
       size="small"
@@ -23,15 +26,18 @@ export const MultiAutoComplete = ({
       getOptionLabel={generateLabel}
       value={value}
       onChange={onChange}
-      renderOption={(props, option, { selected }) => (
-        <li key={option} {...props} style={{ display: "flex", gap: 4 }}>
-          <Checkbox size="small" checked={selected} sx={{ padding: "3px" }} />
-          {generateLabel(option)}
-          {isDisplayToolTip && isNotNullOrUndefined(generateToolTipText) && (
-            <HintToolTip text={generateToolTipText(option)} />
-          )}
-        </li>
-      )}
+      renderOption={(props, option, { selected }) => {
+        const liProps = omitKey(props, "key");
+        return (
+          <li key={option} {...liProps} style={{ display: "flex", gap: 4 }}>
+            <Checkbox size="small" checked={selected} sx={{ padding: "3px" }} />
+            {generateLabel(option)}
+            {isDisplayToolTip && isNotNullOrUndefined(generateToolTipText) && (
+              <HintToolTip text={generateToolTipText(option)} />
+            )}
+          </li>
+        );
+      }}
       renderInput={(params) => (
         <TextField {...params} variant="outlined" label="Contests" />
       )}

@@ -3,6 +3,7 @@ import {
   languageToGroupMap,
   groupedLanguages,
 } from "../../constant/languages";
+import { filtering } from "./filtering";
 
 const setNewRank = (data, isGrouping) => {
   const values = (
@@ -28,44 +29,52 @@ const setNewRank = (data, isGrouping) => {
   });
 };
 
-const getGroup = (contestData, id) => {
-  return contestData[id] && contestData[id].contestGroup;
-};
-
 export const increaseBarChartData = (
   data,
   barChartData,
   setBarChartData,
   viewCount,
+  setViewCount,
   selectContest,
   isGrouping,
+  onlyDuringContest,
+  onlyRates,
+  selectRate,
   contestData
 ) => {
   const addition = 1000;
   for (let i = viewCount; i < viewCount + addition; i++) {
     if (viewCount + i >= data.length) {
       setBarChartData({ ...barChartData });
+      setViewCount((prev) => prev + i);
       return i;
     }
-    const { contest_id, language } = data[i];
-    const group = getGroup(contestData, contest_id);
-    if (isGrouping) {
-      if (
-        languageToGroupMap[language] &&
-        barChartData[languageToGroupMap[language]] &&
-        selectContest[group]
-      ) {
-        barChartData[languageToGroupMap[language]].count++;
-      }
-    } else {
-      if (barChartData[language] && selectContest[group]) {
-        barChartData[language].count++;
+    const { language } = data[i];
+    if (
+      filtering(
+        data[i],
+        { selectContest, onlyDuringContest, onlyRates, selectRate },
+        contestData
+      )
+    ) {
+      if (isGrouping) {
+        if (
+          languageToGroupMap[language] &&
+          barChartData[languageToGroupMap[language]]
+        ) {
+          barChartData[languageToGroupMap[language]].count++;
+        }
+      } else {
+        if (barChartData[language]) {
+          barChartData[language].count++;
+        }
       }
     }
   }
 
   setNewRank(barChartData, isGrouping);
   setBarChartData({ ...barChartData });
+  setViewCount((prev) => prev + addition);
 
   return addition;
 };

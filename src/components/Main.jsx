@@ -8,7 +8,7 @@ export const Main = () => {
   const descriptionText = (
     <Box>
       <Typography>
-        AtCoderの提出データをもとに言語の使用量を可視化したアプリケーションです。
+        AtCoderの提出データをもとに言語の使用量をバーチャートレースを用いて可視化したアプリケーションです。
       </Typography>
       <Typography>
         このアプリケーションでは、2013年10月以降の全提出データを利用しています。

@@ -1,11 +1,19 @@
+import React, { useState } from "react";
+import { useInterval } from "./hooks/useInterval";
 import { Button } from "@mui/material";
-import { useState, useEffect, useRef } from "react";
-import { MultiAutoComplete } from "./common/MultiAutoComplete";
 
 export const Test = () => {
+  const [count, setCount] = useState(0);
+
+  const { start, stop } = useInterval(() => {
+    setCount((prevCount) => prevCount + 1);
+  }, 1000);
+
   return (
     <div>
-      <MultiAutoComplete />
+      <p>Count: {count}</p>
+      <Button onClick={start}>Start</Button>
+      <Button onClick={stop}>Stop</Button>
     </div>
   );
 };

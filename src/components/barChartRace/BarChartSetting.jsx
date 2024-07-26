@@ -9,10 +9,11 @@ import { useContext } from "react";
 import { FilterContext } from "../../context/FilterContext";
 import {
   contestDescription,
-  displayGroupName,
+  displayContestText,
   contests,
 } from "../../constant/contests";
 import { Settings } from "@mui/icons-material";
+import { displayRateText, rateRange, rates } from "../../constant/rate";
 
 export const BarChartSetting = () => {
   const {
@@ -22,12 +23,19 @@ export const BarChartSetting = () => {
     setIsGrouping,
     selectContest,
     setSelectContest,
+    onlyDuringContest,
+    setOnlyDuringContest,
+    onlyRates,
+    setOnlyRates,
+    selectRate,
+    setSelectRate,
+    setLoadingFlag,
   } = useContext(FilterContext);
   return (
     <Box
       display="flex"
       flexDirection="column"
-      paddingTop={1}
+      paddingY={1}
       paddingX={2}
       width="440px"
       gap={2}
@@ -48,30 +56,49 @@ export const BarChartSetting = () => {
           設定
         </Typography>
       </Box>
+
       <Box gap={1}>
         <Box display="flex">
-          <Typography>グループ化</Typography>
+          <Typography>表示数</Typography>
+          <HintToolTip text="表示されるチャートの数を指定できます。(範囲: 3~15)" />
+        </Box>
+        <Counter
+          count={displayCount}
+          setCount={setDisplayCount}
+          max={15}
+          min={3}
+        />
+      </Box>
+
+      <Box gap={1}>
+        <Box display="flex">
+          <Typography>言語グループ化</Typography>
           <HintToolTip text="オンにすると、同種の言語でグループ化されます。　例: Python, PyPy, CPython => Python" />
         </Box>
         <OnOffSwitch
-          label="グループ化"
+          label="言語グループ化"
           checked={isGrouping}
-          onChange={() => setIsGrouping((prev) => !prev)}
+          onChange={() => {
+            setLoadingFlag(true);
+            setIsGrouping((prev) => !prev);
+          }}
         />
       </Box>
+
       <Box>
-        <Box display="flex" marginBottom={0.5}>
+        <Box display="flex" marginBottom={1}>
           <Typography>コンテスト</Typography>
           <HintToolTip text="チャートに加算されるコンテストの種類を指定できます" />
         </Box>
         <Box display="flex" gap={1}>
           <Box flex={2}>
             <MultiAutoComplete
-              limitTags="3"
+              limitTags={3}
               options={contests}
               value={contests.filter((key) => selectContest[key])}
-              generateLabel={(option) => displayGroupName[option]}
+              generateLabel={(option) => displayContestText[option]}
               onChange={(_, newValue) => {
+                setLoadingFlag(true);
                 const updatedSelection = contests.reduce(
                   (acc, key) => ({
                     ...acc,
@@ -86,11 +113,12 @@ export const BarChartSetting = () => {
             />
           </Box>
           <Button
-            onClick={() =>
+            onClick={() => {
+              setLoadingFlag(true);
               setSelectContest(
                 contests.reduce((acc, key) => ({ ...acc, [key]: true }), {})
-              )
-            }
+              );
+            }}
             size="small"
             variant="contained"
             flex={1}
@@ -99,17 +127,81 @@ export const BarChartSetting = () => {
           </Button>
         </Box>
       </Box>
-      <Box gap={1}>
-        <Box display="flex">
-          <Typography>表示数</Typography>
-          <HintToolTip text="表示されるチャートの数を指定できます。(範囲: 3~15)" />
+
+      <Box display="flex" gap={3}>
+        <Box gap={1}>
+          <Box display="flex">
+            <Typography>コンテスト中のみ</Typography>
+            <HintToolTip text="オンにすると、コンテスト中のデータのみが反映されます。" />
+          </Box>
+          <OnOffSwitch
+            label="コンテスト中"
+            checked={onlyDuringContest}
+            onChange={() => {
+              setLoadingFlag(true);
+              setOnlyDuringContest((prev) => !prev);
+            }}
+          />
         </Box>
-        <Counter
-          count={displayCount}
-          setCount={setDisplayCount}
-          max={15}
-          min={3}
-        />
+        <Box gap={1}>
+          <Box display="flex">
+            <Typography>レートがあるもののみ</Typography>
+            <HintToolTip text="オンにすると、レートが存在するデータのみが反映されます。（データによってレートの有無が異なるため）" />
+          </Box>
+          <OnOffSwitch
+            label="レートあり"
+            checked={onlyRates}
+            onChange={() => {
+              setLoadingFlag(true);
+              setOnlyRates((prev) => !prev);
+            }}
+          />
+        </Box>
+      </Box>
+
+      <Box>
+        <Box display="flex" marginBottom={1}>
+          <Typography>レート</Typography>
+          <HintToolTip text="チャートに加算されるレートの種類を指定できます。" />
+        </Box>
+        <Box display="flex" gap={1}>
+          <Box flex={2}>
+            <MultiAutoComplete
+              limitTags={3}
+              options={rates}
+              value={rates.filter((key) => selectRate[key])}
+              generateLabel={(option) => displayRateText[option]}
+              onChange={(_, newValue) => {
+                setLoadingFlag(true);
+                const updatedSelection = rates.reduce(
+                  (acc, key) => ({
+                    ...acc,
+                    [key]: newValue.includes(key),
+                  }),
+                  {}
+                );
+                setSelectRate(updatedSelection);
+              }}
+              isDisplayToolTip
+              generateToolTipText={(option) =>
+                `レート: ${rateRange[option].lower}~${rateRange[option].upper}`
+              }
+            />
+          </Box>
+          <Button
+            onClick={() => {
+              setLoadingFlag(true);
+              setSelectRate(
+                rates.reduce((acc, key) => ({ ...acc, [key]: true }), {})
+              );
+            }}
+            size="small"
+            variant="contained"
+            flex={1}
+          >
+            全選択
+          </Button>
+        </Box>
       </Box>
     </Box>
   );

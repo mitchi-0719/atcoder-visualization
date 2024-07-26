@@ -1,6 +1,6 @@
 export const contests = ["abc", "arc", "agc", "ahc", "adt", "other"];
 
-export const displayGroupName = {
+export const displayContestText = {
   abc: "ABC",
   arc: "ARC",
   agc: "AGC",

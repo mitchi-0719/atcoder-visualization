@@ -1,7 +1,7 @@
 import * as d3 from "d3";
 import { allLanguages, groupedLanguages } from "../../constant/languages";
 
-export const barChartDataInit = (isGrouping) => {
+export const InitializeBarChartData = (isGrouping) => {
   const temp = {};
   const color = d3.scaleOrdinal(d3.schemeCategory10);
 

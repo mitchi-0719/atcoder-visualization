@@ -60,3 +60,15 @@ export const rateToColorMap = {
   2800: "red",
   3200: "more",
 };
+
+export const displayRateText = {
+  gray: "灰",
+  brown: "茶",
+  green: "緑",
+  lightBlue: "水",
+  blue: "青",
+  yellow: "黄",
+  orange: "橙",
+  red: "赤",
+  more: "最上位",
+};

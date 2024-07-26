@@ -9,7 +9,7 @@ export const OnOffSwitch = ({ checked, onChange, label }) => {
       borderRadius="4px"
       padding={0.5}
       width="fit-content"
-      bgcolor="#f9f9f9"
+      bgcolor="#fff"
     >
       <FormControlLabel
         control={<Switch checked={checked} onChange={onChange} />}
