@@ -5,7 +5,7 @@ import {
   MultiAutoComplete,
   HintToolTip,
 } from "../../common";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FilterContext } from "../../context/FilterContext";
 import {
   contestDescription,
@@ -14,8 +14,11 @@ import {
 } from "../../constant/contests";
 import { Settings } from "@mui/icons-material";
 import { displayRateText, rateRange, rates } from "../../constant/rate";
+import { MultiAutoCompleteWithNest } from "../../common/MultiAutoCompleteWithNest";
+import { allLanguages, groupedLanguages } from "../../constant/languages";
 
 export const BarChartSetting = () => {
+  const [prevValue, setPrevValue] = useState(Object.keys(groupedLanguages));
   const {
     displayCount,
     setDisplayCount,
@@ -29,6 +32,10 @@ export const BarChartSetting = () => {
     setOnlyRates,
     selectRate,
     setSelectRate,
+    selectLanguage,
+    setSelectLanguage,
+    selectGroupedLanguage,
+    setSelectGroupedLanguage,
     setLoadingFlag,
   } = useContext(FilterContext);
   return (
@@ -83,6 +90,92 @@ export const BarChartSetting = () => {
             setIsGrouping((prev) => !prev);
           }}
         />
+      </Box>
+
+      <Box>
+        <Box display="flex" marginBottom={1}>
+          <Typography>プログラミング言語</Typography>
+          <HintToolTip text="チャートに表示されるプログラミング言語の種類を指定できます" />
+        </Box>
+        {isGrouping ? (
+          <Box display="flex" gap={1}>
+            <Box flex={2}>
+              <MultiAutoComplete
+                limitTags={3}
+                options={Object.keys(groupedLanguages)}
+                value={Object.keys(groupedLanguages).filter(
+                  (key) => selectGroupedLanguage[key]
+                )}
+                generateLabel={(option) => option}
+                onChange={(_, newValue) => {
+                  setLoadingFlag(true);
+                  const updatedSelection = Object.keys(groupedLanguages).reduce(
+                    (acc, key) => ({
+                      ...acc,
+                      [key]: newValue.includes(key),
+                    }),
+                    {}
+                  );
+                  setSelectGroupedLanguage(updatedSelection);
+                }}
+              />
+            </Box>
+            <Button
+              onClick={() => {
+                setLoadingFlag(true);
+                setSelectGroupedLanguage(
+                  Object.keys(groupedLanguages).reduce(
+                    (acc, key) => ({ ...acc, [key]: true }),
+                    {}
+                  )
+                );
+              }}
+              size="small"
+              variant="contained"
+              flex={1}
+            >
+              全選択
+            </Button>
+          </Box>
+        ) : (
+          <Box display="flex" gap={1}>
+            <Box flex={2}>
+              <MultiAutoComplete
+                limitTags={3}
+                options={allLanguages}
+                value={allLanguages.filter((key) => selectLanguage[key])}
+                generateLabel={(option) => option}
+                onChange={(_, newValue) => {
+                  setLoadingFlag(true);
+                  const updatedSelection = allLanguages.reduce(
+                    (acc, key) => ({
+                      ...acc,
+                      [key]: newValue.includes(key),
+                    }),
+                    {}
+                  );
+                  setSelectLanguage(updatedSelection);
+                }}
+              />
+            </Box>
+            <Button
+              onClick={() => {
+                setLoadingFlag(true);
+                setSelectLanguage(
+                  allLanguages.reduce(
+                    (acc, key) => ({ ...acc, [key]: true }),
+                    {}
+                  )
+                );
+              }}
+              size="small"
+              variant="contained"
+              flex={1}
+            >
+              全選択
+            </Button>
+          </Box>
+        )}
       </Box>
 
       <Box>

@@ -24,6 +24,8 @@ export const BarChartRace = () => {
     onlyRates,
     selectRate,
     loadingFlag,
+    selectLanguage,
+    selectGroupedLanguage,
     setLoadingFlag,
   } = useContext(FilterContext);
 
@@ -45,6 +47,8 @@ export const BarChartRace = () => {
       onlyDuringContest,
       onlyRates,
       selectRate,
+      selectLanguage,
+      selectGroupedLanguage,
       contestData
     );
   };
