@@ -1,14 +1,19 @@
 import { useState, createContext, useEffect } from "react";
-import { fetchContestData, fetchDemoData } from "../api/fetchDemoData";
+import { fetchContestData, fetchData } from "../api/fetchData";
 
 export const DataContext = createContext("");
 
-const fetchData = async (setData, setContestData, setIsLoading, setError) => {
+const fetchAllData = async (
+  setData,
+  setContestData,
+  setIsLoading,
+  setError
+) => {
   setIsLoading(true);
   setError(null);
   try {
     const [data, contestData] = await Promise.all([
-      fetchDemoData(),
+      fetchData(),
       fetchContestData(),
     ]);
     setData(data);
@@ -27,7 +32,7 @@ export const DataContextProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchData(setData, setContestData, setIsLoading, setError);
+    fetchAllData(setData, setContestData, setIsLoading, setError);
   }, []);
 
   const contextValue = {
