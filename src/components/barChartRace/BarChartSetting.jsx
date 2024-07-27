@@ -15,7 +15,7 @@ import {
 import { Settings } from "@mui/icons-material";
 import { displayRateText, rateRange, rates } from "../../constant/rate";
 import { MultiAutoCompleteWithNest } from "../../common/MultiAutoCompleteWithNest";
-import { groupedLanguages } from "../../constant/languages";
+import { allLanguages, groupedLanguages } from "../../constant/languages";
 
 export const BarChartSetting = () => {
   const [prevValue, setPrevValue] = useState(Object.keys(groupedLanguages));
@@ -34,6 +34,8 @@ export const BarChartSetting = () => {
     setSelectRate,
     selectLanguage,
     setSelectLanguage,
+    selectGroupedLanguage,
+    setSelectGroupedLanguage,
     setLoadingFlag,
   } = useContext(FilterContext);
   return (
@@ -90,92 +92,91 @@ export const BarChartSetting = () => {
         />
       </Box>
 
-      {/* <Box>
+      <Box>
         <Box display="flex" marginBottom={1}>
           <Typography>プログラミング言語</Typography>
           <HintToolTip text="チャートに表示されるプログラミング言語の種類を指定できます" />
         </Box>
-        <Box display="flex" gap={1}>
-          <Box flex={2}>
-            <MultiAutoCompleteWithNest
-              limitTags={3}
-              options={Object.keys(selectLanguage)}
-              value={Object.keys(selectLanguage).filter(
-                (key) => selectLanguage[key].checked
-              )}
-              generateLabel={(option) => option}
-              onChange={(_, newValue) => {
-                setLoadingFlag(true);
-                const newSelectLanguage = { ...selectLanguage };
-                let updatePrevValue = [...newValue];
-
-                if (newValue.length > prevValue.length) {
-                  const addedItem = newValue.filter(
-                    (item) => !prevValue.includes(item)
-                  )[0];
-                  if (addedItem in Object.keys(groupedLanguages)) {
-                    const children = groupedLanguages[addedItem];
-                    newSelectLanguage[addedItem].checked = true;
-                    children.forEach((child) => {
-                      newSelectLanguage[child].checked = true;
-                      updatePrevValue.add(child);
-                    });
-                  } else {
-                    newSelectLanguage[addedItem].checked = true;
-                  }
-                } else {
-                  const removedItem = prevValue.filter(
-                    (item) => !newValue.includes(item)
-                  )[0];
-                  if (removedItem in Object.keys(groupedLanguages)) {
-                    const children = groupedLanguages[removedItem];
-                    newSelectLanguage[removedItem].checked = false;
-                    children.forEach((child) => {
-                      newSelectLanguage[child].checked = false;
-                    });
-                    updatePrevValue = updatePrevValue.filter(
-                      (item) => !(item in children)
-                    );
-                  } else {
-                    newSelectLanguage[removedItem].checked = false;
-                  }
-                }
-
-                setSelectLanguage(newSelectLanguage);
-                setPrevValue(updatePrevValue);
-              }}
-            />
-          </Box>
-          <Button
-            onClick={() => {
-              setLoadingFlag(true);
-              setSelectLanguage(
-                Object.entries(groupedLanguages).reduce(
-                  (acc, [parent, children]) => {
-                    return {
+        {isGrouping ? (
+          <Box display="flex" gap={1}>
+            <Box flex={2}>
+              <MultiAutoComplete
+                limitTags={3}
+                options={Object.keys(groupedLanguages)}
+                value={Object.keys(groupedLanguages).filter(
+                  (key) => selectGroupedLanguage[key]
+                )}
+                generateLabel={(option) => option}
+                onChange={(_, newValue) => {
+                  setLoadingFlag(true);
+                  const updatedSelection = Object.keys(groupedLanguages).reduce(
+                    (acc, key) => ({
                       ...acc,
-                      [parent]: { checked: true, isParent: true },
-                      ...children.reduce(
-                        (childAcc, child) => ({
-                          ...childAcc,
-                          [child]: { checked: true, isParent: false },
-                        }),
-                        {}
-                      ),
-                    };
-                  },
-                  {}
-                )
-              );
-            }}
-            size="small"
-            variant="contained"
-            flex={1}
-          >
-            全選択
-          </Button>
-        </Box>
-      </Box> */}
+                      [key]: newValue.includes(key),
+                    }),
+                    {}
+                  );
+                  setSelectGroupedLanguage(updatedSelection);
+                }}
+              />
+            </Box>
+            <Button
+              onClick={() => {
+                setLoadingFlag(true);
+                setSelectGroupedLanguage(
+                  Object.keys(groupedLanguages).reduce(
+                    (acc, key) => ({ ...acc, [key]: true }),
+                    {}
+                  )
+                );
+              }}
+              size="small"
+              variant="contained"
+              flex={1}
+            >
+              全選択
+            </Button>
+          </Box>
+        ) : (
+          <Box display="flex" gap={1}>
+            <Box flex={2}>
+              <MultiAutoComplete
+                limitTags={3}
+                options={allLanguages}
+                value={allLanguages.filter((key) => selectLanguage[key])}
+                generateLabel={(option) => option}
+                onChange={(_, newValue) => {
+                  setLoadingFlag(true);
+                  const updatedSelection = allLanguages.reduce(
+                    (acc, key) => ({
+                      ...acc,
+                      [key]: newValue.includes(key),
+                    }),
+                    {}
+                  );
+                  setSelectLanguage(updatedSelection);
+                }}
+              />
+            </Box>
+            <Button
+              onClick={() => {
+                setLoadingFlag(true);
+                setSelectLanguage(
+                  allLanguages.reduce(
+                    (acc, key) => ({ ...acc, [key]: true }),
+                    {}
+                  )
+                );
+              }}
+              size="small"
+              variant="contained"
+              flex={1}
+            >
+              全選択
+            </Button>
+          </Box>
+        )}
+      </Box>
 
       <Box>
         <Box display="flex" marginBottom={1}>

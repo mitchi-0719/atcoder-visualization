@@ -40,6 +40,8 @@ export const increaseBarChartData = (
   onlyDuringContest,
   onlyRates,
   selectRate,
+  selectLanguage,
+  selectGroupedLanguage,
   contestData
 ) => {
   const addition = 1000;
@@ -53,7 +55,15 @@ export const increaseBarChartData = (
     if (
       filtering(
         data[i],
-        { selectContest, onlyDuringContest, onlyRates, selectRate },
+        {
+          isGrouping,
+          selectContest,
+          onlyDuringContest,
+          onlyRates,
+          selectRate,
+          selectLanguage,
+          selectGroupedLanguage,
+        },
         contestData
       )
     ) {

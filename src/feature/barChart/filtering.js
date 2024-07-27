@@ -1,3 +1,4 @@
+import { languageToGroupMap } from "../../constant/languages";
 import { rateToColorMap } from "../../constant/rate";
 import { isNotNullOrUndefined, isNullOrUndefined } from "../nullUndefined";
 import { roundToN } from "../roundToN";
@@ -11,9 +12,16 @@ const getColor = (rate) => {
 };
 
 export const filtering = (data, filterData, contestData) => {
-  const { contest_id, isDuringContest, rate } = data;
-  const { selectContest, onlyDuringContest, onlyRates, selectRate } =
-    filterData;
+  const { contest_id, language, isDuringContest, rate } = data;
+  const {
+    isGrouping,
+    selectContest,
+    onlyDuringContest,
+    onlyRates,
+    selectRate,
+    selectLanguage,
+    selectGroupedLanguage,
+  } = filterData;
   const contestCategory = getCategory(contestData, contest_id);
   const rateColor = getColor(rate);
 
@@ -31,6 +39,17 @@ export const filtering = (data, filterData, contestData) => {
 
   if (isNotNullOrUndefined(rateColor) && !selectRate[rateColor]) {
     return false;
+  }
+
+  if (isGrouping) {
+    const languageGroup = languageToGroupMap[language];
+    if (!selectGroupedLanguage[languageGroup]) {
+      return false;
+    }
+  } else {
+    if (!selectLanguage[language]) {
+      return false;
+    }
   }
 
   return true;

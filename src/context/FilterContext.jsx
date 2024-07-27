@@ -17,19 +17,13 @@ export const FilterContextProvider = ({ children }) => {
     rates.reduce((acc, key) => ({ ...acc, [key]: true }), {})
   );
   const [selectLanguage, setSelectLanguage] = useState(
-    Object.entries(groupedLanguages).reduce((acc, [parent, children]) => {
-      return {
-        ...acc,
-        [parent]: { checked: true, isParent: true },
-        ...children.reduce(
-          (childAcc, child) => ({
-            ...childAcc,
-            [child]: { checked: true, isParent: false },
-          }),
-          {}
-        ),
-      };
-    }, {})
+    allLanguages.reduce((acc, key) => ({ ...acc, [key]: true }), {})
+  );
+  const [selectGroupedLanguage, setSelectGroupedLanguage] = useState(
+    Object.keys(groupedLanguages).reduce(
+      (acc, key) => ({ ...acc, [key]: true }),
+      {}
+    )
   );
   const [loadingFlag, setLoadingFlag] = useState(false);
 
@@ -48,6 +42,8 @@ export const FilterContextProvider = ({ children }) => {
     setSelectRate,
     selectLanguage,
     setSelectLanguage,
+    selectGroupedLanguage,
+    setSelectGroupedLanguage,
     loadingFlag,
     setLoadingFlag,
   };
