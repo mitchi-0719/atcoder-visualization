@@ -1,6 +1,6 @@
 import { languageToGroupMap } from "../../constant/languages";
 import { rateToColorMap } from "../../constant/rate";
-import { isNotNullOrUndefined, isNullOrUndefined } from "../nullUndefined";
+import { isNotNullOrUndefined, isNullOrUndefined } from "../isNullOrUndefined";
 import { roundToN } from "../roundToN";
 
 const getCategory = (contestData, id) => {

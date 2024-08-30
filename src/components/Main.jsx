@@ -1,10 +1,10 @@
 import { Box, createTheme, ThemeProvider, Typography } from "@mui/material";
 import { Header, Description, Footer } from "../common";
 import { InfoOutlined } from "@mui/icons-material";
-import { BarChartRaceMain } from "./barChartRace/BarChartRaceMain";
 import { DarkModeContext } from "../context/DarkModeContext";
 import { useContext } from "react";
 import { DARK_BG_COLOR, LIGHT_BG_COLOR } from "../style/style";
+import { BarChartRaceMain } from "./barChartRace";
 
 export const Main = () => {
   const { isDark } = useContext(DarkModeContext);

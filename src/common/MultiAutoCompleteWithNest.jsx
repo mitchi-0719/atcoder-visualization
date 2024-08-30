@@ -1,6 +1,6 @@
 import { Autocomplete, TextField, Checkbox } from "@mui/material";
 import { HintToolTip } from "./HintToolTip";
-import { isNotNullOrUndefined } from "../feature/nullUndefined";
+import { isNotNullOrUndefined } from "../feature/isNullOrUndefined";
 
 export const MultiAutoCompleteWithNest = ({
   disabled,

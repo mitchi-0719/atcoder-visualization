@@ -4,6 +4,7 @@ import {
   OnOffSwitch,
   MultiAutoComplete,
   HintToolTip,
+  ContentCard,
 } from "../../common";
 import { useContext, useState } from "react";
 import { FilterContext } from "../../context/FilterContext";
@@ -16,7 +17,6 @@ import { Settings } from "@mui/icons-material";
 import { displayRateText, rateRange, rates } from "../../constant/rate";
 import { MultiAutoCompleteWithNest } from "../../common/MultiAutoCompleteWithNest";
 import { allLanguages, groupedLanguages } from "../../constant/languages";
-import { ContentCard } from "../../common/Card";
 
 export const BarChartSetting = () => {
   const [prevValue, setPrevValue] = useState(Object.keys(groupedLanguages));

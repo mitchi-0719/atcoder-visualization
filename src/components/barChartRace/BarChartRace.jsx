@@ -7,14 +7,13 @@ import {
   InitializeBarChartData,
   increaseBarChartData,
 } from "../../feature/barChart";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { BarChartScale } from "./BarChartScale";
 import { DataContext } from "../../context/DataContext";
 import { FilterContext } from "../../context/FilterContext";
 import { SignalCellularAlt } from "@mui/icons-material";
 import { useInterval } from "../../hooks/useInterval";
-import { Loading } from "../../common";
-import { ContentCard } from "../../common/Card";
+import { Loading, ContentCard } from "../../common";
 
 export const BarChartRace = () => {
   const { data, contestData } = useContext(DataContext);
