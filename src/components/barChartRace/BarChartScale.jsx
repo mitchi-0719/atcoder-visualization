@@ -1,8 +1,10 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import * as d3 from "d3";
 import { labelWidth } from "../../constant/svgConstants";
+import { DarkModeContext } from "../../context/DarkModeContext";
 
 export const BarChartScale = ({ xScale }) => {
+  const { isDark } = useContext(DarkModeContext);
   const xAxis = d3.axisBottom(xScale).ticks(5);
 
   useEffect(() => {

@@ -16,6 +16,7 @@ import { Settings } from "@mui/icons-material";
 import { displayRateText, rateRange, rates } from "../../constant/rate";
 import { MultiAutoCompleteWithNest } from "../../common/MultiAutoCompleteWithNest";
 import { allLanguages, groupedLanguages } from "../../constant/languages";
+import { ContentCard } from "../../common/Card";
 
 export const BarChartSetting = () => {
   const [prevValue, setPrevValue] = useState(Object.keys(groupedLanguages));
@@ -38,32 +39,13 @@ export const BarChartSetting = () => {
     setSelectGroupedLanguage,
     setLoadingFlag,
   } = useContext(FilterContext);
-  return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      paddingY={1}
-      paddingX={2}
-      width="440px"
-      gap={2}
-      border="1px solid #a0a0a0"
-      borderRadius={1}
-      bgcolor="#efefef"
-      boxShadow="0px 4px 6px rgba(0, 0, 0, 0.3)"
-    >
-      <Box
-        display="flex"
-        gap={1}
-        marginX="auto"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Settings />
-        <Typography component="h3" variant="h6">
-          設定
-        </Typography>
-      </Box>
 
+  return (
+    <ContentCard
+      icon={<Settings />}
+      title="設定"
+      sx={{ display: "flex", flexDirection: "column", width: "440px", gap: 2 }}
+    >
       <Box gap={1}>
         <Box display="flex">
           <Typography>表示数</Typography>
@@ -296,6 +278,6 @@ export const BarChartSetting = () => {
           </Button>
         </Box>
       </Box>
-    </Box>
+    </ContentCard>
   );
 };

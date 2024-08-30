@@ -6,15 +6,16 @@ import {
   scaleHeight,
   svgHeight,
 } from "../../constant/svgConstants";
-import { textColor } from "../../style/style";
+import { DARK_TEXT_COLOR, LIGHT_TEXT_COLOR } from "../../style/style";
 import { EllipsisSvgText } from "./EllipsisSvgText";
 import { FilterContext } from "../../context/FilterContext";
+import { DarkModeContext } from "../../context/DarkModeContext";
 
 export const BarChart = ({ data, xScale }) => {
+  const { isDark } = useContext(DarkModeContext);
   const { displayCount } = useContext(FilterContext);
   const { id, language, color, count, rank } = data;
   const textY = barMargin + barHeight / 2 + scaleHeight + 2;
-
   return (
     (barMargin + barHeight) * (rank + 1) <= svgHeight &&
     rank < displayCount && (
@@ -28,7 +29,7 @@ export const BarChart = ({ data, xScale }) => {
           y={textY}
           labelWidth={labelWidth - 10}
           language={language}
-          textColor={textColor}
+          textColor={isDark ? DARK_TEXT_COLOR : LIGHT_TEXT_COLOR}
         />
         <rect
           x={labelWidth}
@@ -42,8 +43,8 @@ export const BarChart = ({ data, xScale }) => {
           x={labelWidth + 10}
           y={textY}
           dominantBaseline="middle"
-          fill={textColor}
-          stroke={textColor}
+          fill={isDark ? DARK_TEXT_COLOR : LIGHT_TEXT_COLOR}
+          stroke={isDark ? DARK_TEXT_COLOR : LIGHT_TEXT_COLOR}
         >
           {count.toLocaleString()}
         </text>

@@ -14,6 +14,7 @@ import { FilterContext } from "../../context/FilterContext";
 import { SignalCellularAlt } from "@mui/icons-material";
 import { useInterval } from "../../hooks/useInterval";
 import { Loading } from "../../common";
+import { ContentCard } from "../../common/Card";
 
 export const BarChartRace = () => {
   const { data, contestData } = useContext(DataContext);
@@ -91,31 +92,16 @@ export const BarChartRace = () => {
   }, [viewCount, data.length]);
 
   return (
-    <Box
-      paddingY={1}
-      paddingX={2}
-      border="1px solid #a0a0a0"
-      borderRadius={1}
-      bgcolor="#efefef"
-      boxShadow="0px 4px 6px rgba(0, 0, 0, 0.3)"
-    >
-      <Box
-        display="flex"
-        gap={1}
-        paddingBottom={1}
-        marginX="auto"
-        justifyContent="center"
-        alignItems="center"
-      >
+    <ContentCard
+      icon={
         <SignalCellularAlt
           sx={{
             transform: "rotate(90deg) scaleX(-1)",
           }}
         />
-        <Typography component="h3" variant="h6">
-          バーチャートレース
-        </Typography>
-      </Box>
+      }
+      title={"バーチャートレース"}
+    >
       {loadingFlag ? (
         <Box width={svgWidth}>
           <Loading />
@@ -137,6 +123,6 @@ export const BarChartRace = () => {
           <BarChartScale xScale={xScale} />
         </svg>
       )}
-    </Box>
+    </ContentCard>
   );
 };

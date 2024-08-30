@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 
 export const EllipsisSvgText = ({ x, y, labelWidth, language, textColor }) => {
   const textRef = useRef(null);
