@@ -1,23 +1,24 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { headerHeight } from "../constant/commonConstants";
 import {
   DARK_ACCENT_COLOR,
   DARK_TEXT_COLOR,
-  headerBgColor,
   LIGHT_ACCENT_COLOR,
   LIGHT_TEXT_COLOR,
 } from "../style/style";
 import { useContext } from "react";
 import { DarkModeContext } from "../context/DarkModeContext";
+import { DarkMode, LightMode } from "@mui/icons-material";
 
 export const Header = () => {
-  const { isDark } = useContext(DarkModeContext);
+  const { isDark, setIsDark } = useContext(DarkModeContext);
   const title = "AtCoder Visualization";
 
   return (
     <Box
       display="flex"
       alignItems="center"
+      justifyContent="space-between"
       component="header"
       height={headerHeight}
       bgcolor={isDark ? DARK_ACCENT_COLOR : LIGHT_ACCENT_COLOR}
@@ -33,6 +34,13 @@ export const Header = () => {
       >
         {title}
       </Typography>
+      <Button
+        variant="contained"
+        startIcon={isDark ? <LightMode /> : <DarkMode />}
+        onClick={() => setIsDark((prev) => !prev)}
+      >
+        {isDark ? "Light" : "Dark"}
+      </Button>
     </Box>
   );
 };

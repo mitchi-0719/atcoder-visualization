@@ -3,8 +3,10 @@ import { useContext } from "react";
 import { DarkModeContext } from "../context/DarkModeContext";
 import {
   DARK_CARD_BG_COLOR,
+  DARK_TEXT_COLOR,
   DARK_UI_BORDER_COLOR,
   LIGHT_CARD_BG_COLOR,
+  LIGHT_TEXT_COLOR,
   LIGHT_UI_BORDER_COLOR,
 } from "../style/style";
 
@@ -19,6 +21,7 @@ export const ContentCard = ({ icon, title, sx, children }) => {
       }`}
       borderRadius={1}
       bgcolor={isDark ? DARK_CARD_BG_COLOR : LIGHT_CARD_BG_COLOR}
+      color={isDark ? DARK_TEXT_COLOR : LIGHT_TEXT_COLOR}
       boxShadow="0px 4px 6px rgba(0, 0, 0, 0.3)"
       sx={{ ...sx }}
     >

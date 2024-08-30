@@ -15,20 +15,6 @@ export const Main = () => {
   });
 
   const descriptionTitle = "このアプリとは？";
-  const descriptionText = (
-    <Box>
-      <Typography>
-        AtCoderの提出データをもとに言語の使用量をバーチャートレースを用いて可視化したアプリケーションです。
-      </Typography>
-      <Typography>
-        このアプリケーションでは、2013年10月以降の全提出データを利用しています。（現在は、一部のデータのみ）
-      </Typography>
-      <Typography>
-        下側の「設定」から、自分の見たい情報をフィルタリングすると、フィルタリングに基づいたデータが描画されるようになっています。
-      </Typography>
-    </Box>
-  );
-
   return (
     <ThemeProvider theme={theme}>
       <Box
@@ -38,11 +24,19 @@ export const Main = () => {
         bgcolor={isDark ? DARK_BG_COLOR : LIGHT_BG_COLOR}
       >
         <Header />
-        <Description
-          startIcon={<InfoOutlined />}
-          title={descriptionTitle}
-          text={descriptionText}
-        />
+        <Description startIcon={<InfoOutlined />} title={descriptionTitle}>
+          <Box>
+            <Typography>
+              AtCoderの提出データをもとに言語の使用量をバーチャートレースを用いて可視化したアプリケーションです。
+            </Typography>
+            <Typography>
+              このアプリケーションでは、2013年10月以降の全提出データを利用しています。（現在は、一部のデータのみ）
+            </Typography>
+            <Typography>
+              下側の「設定」から、自分の見たい情報をフィルタリングすると、フィルタリングに基づいたデータが描画されるようになっています。
+            </Typography>
+          </Box>
+        </Description>
         <BarChartRaceMain />
         <Footer />
       </Box>

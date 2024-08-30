@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import { ContentCard } from "./Card";
 
-export const Description = ({ startIcon, title, text }) => {
+export const Description = ({ startIcon, title, children }) => {
   return (
     <ContentCard
       icon={startIcon}
@@ -9,7 +9,7 @@ export const Description = ({ startIcon, title, text }) => {
       sx={{ display: "flex", flexDirection: "column", marginY: 2, marginX: 6 }}
     >
       <Box display="flex" justifyContent="center">
-        {text}
+        {children}
       </Box>
     </ContentCard>
   );
