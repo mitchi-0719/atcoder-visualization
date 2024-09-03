@@ -106,21 +106,26 @@ export const BarChartRace = () => {
           <Loading />
         </Box>
       ) : (
-        <svg width={svgWidth} height={svgHeight}>
-          {(isGrouping ? Object.keys(groupedLanguages) : allLanguages).map(
-            (label) => {
-              const key = barChartData[label].id;
-              return (
-                <BarChart
-                  key={key}
-                  data={barChartData[label]}
-                  xScale={xScale}
-                />
-              );
-            }
-          )}
-          <BarChartScale xScale={xScale} />
-        </svg>
+        <>
+          <Box textAlign="end" fontSize="10px">
+            (件)
+          </Box>
+          <svg width={svgWidth} height={svgHeight}>
+            {(isGrouping ? Object.keys(groupedLanguages) : allLanguages).map(
+              (label) => {
+                const key = barChartData[label].id;
+                return (
+                  <BarChart
+                    key={key}
+                    data={barChartData[label]}
+                    xScale={xScale}
+                  />
+                );
+              }
+            )}
+            <BarChartScale xScale={xScale} />
+          </svg>
+        </>
       )}
     </ContentCard>
   );
