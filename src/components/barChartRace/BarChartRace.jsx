@@ -91,7 +91,7 @@ export const BarChartRace = () => {
     if (viewCount > data.length) {
       stop();
     }
-  }, [viewCount, data.length]);
+  }, [viewCount, data?.length]);
 
   return (
     <ContentCard>
