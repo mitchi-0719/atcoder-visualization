@@ -6,7 +6,7 @@ import {
   HintToolTip,
   ContentCard,
 } from "../../common";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { FilterContext } from "../../context/FilterContext";
 import {
   contestDescription,
@@ -20,12 +20,10 @@ import {
   rateRange,
   rates,
 } from "../../constant/rate";
-import { MultiAutoCompleteWithNest } from "../../common/MultiAutoCompleteWithNest";
 import { allLanguages, groupedLanguages } from "../../constant/languages";
 import { SETTING_LABEL_SIZE } from "../../style/style";
 
 export const BarChartSetting = () => {
-  const [prevValue, setPrevValue] = useState(Object.keys(groupedLanguages));
   const {
     displayCount,
     setDisplayCount,
