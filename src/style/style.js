@@ -16,5 +16,7 @@ export const DARK_UI_BG_COLOR = "#1A1A1A";
 export const LIGHT_UI_BORDER_COLOR = "#CCC";
 export const DARK_UI_BORDER_COLOR = "#424242";
 
-export const headerBgColor = "#ABE1FA";
-export const footerBgColor = "#ABE1FA";
+export const LIGHT_UI_HOVER_BORDER_COLOR = "#000";
+export const DARK_UI_HOVER_BORDER_COLOR = "#FFF";
+
+export const SETTING_LABEL_SIZE = "12px";

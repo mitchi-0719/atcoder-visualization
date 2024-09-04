@@ -4,7 +4,7 @@ import { Tooltip } from "@mui/material";
 export const HintToolTip = ({ text }) => {
   return (
     <Tooltip title={text}>
-      <Info color="info" />
+      <Info color="info" fontSize="small" />
     </Tooltip>
   );
 };

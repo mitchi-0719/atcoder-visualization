@@ -22,6 +22,7 @@ import {
 } from "../../constant/rate";
 import { MultiAutoCompleteWithNest } from "../../common/MultiAutoCompleteWithNest";
 import { allLanguages, groupedLanguages } from "../../constant/languages";
+import { SETTING_LABEL_SIZE } from "../../style/style";
 
 export const BarChartSetting = () => {
   const [prevValue, setPrevValue] = useState(Object.keys(groupedLanguages));
@@ -48,37 +49,43 @@ export const BarChartSetting = () => {
   return (
     <ContentCard icon={<Settings />} title="設定" sx={{ width: "440px" }}>
       <Box gap={2} display="flex" flexDirection="column">
-        <Box gap={1}>
-          <Box display="flex">
-            <Typography>表示数</Typography>
-            <HintToolTip text="表示されるチャートの数を指定できます。(範囲: 3~15)" />
+        <Box display="flex" gap={3}>
+          <Box gap={1}>
+            <Box display="flex">
+              <Typography fontSize={SETTING_LABEL_SIZE}>表示数</Typography>
+              <HintToolTip text="表示されるチャートの数を指定できます。(範囲: 3~15)" />
+            </Box>
+            <Counter
+              count={displayCount}
+              setCount={setDisplayCount}
+              max={15}
+              min={3}
+            />
           </Box>
-          <Counter
-            count={displayCount}
-            setCount={setDisplayCount}
-            max={15}
-            min={3}
-          />
-        </Box>
 
-        <Box gap={1}>
-          <Box display="flex">
-            <Typography>言語グループ化</Typography>
-            <HintToolTip text="オンにすると、同種の言語でグループ化されます。　例: Python, PyPy, CPython => Python" />
+          <Box gap={1}>
+            <Box display="flex">
+              <Typography fontSize={SETTING_LABEL_SIZE}>
+                言語グループ化
+              </Typography>
+              <HintToolTip text="オンにすると、同種の言語でグループ化されます。　例: Python, PyPy, CPython => Python" />
+            </Box>
+            <OnOffSwitch
+              label="言語グループ化"
+              checked={isGrouping}
+              onChange={() => {
+                setLoadingFlag(true);
+                setIsGrouping((prev) => !prev);
+              }}
+            />
           </Box>
-          <OnOffSwitch
-            label="言語グループ化"
-            checked={isGrouping}
-            onChange={() => {
-              setLoadingFlag(true);
-              setIsGrouping((prev) => !prev);
-            }}
-          />
         </Box>
 
         <Box>
           <Box display="flex" marginBottom={1}>
-            <Typography>プログラミング言語</Typography>
+            <Typography fontSize={SETTING_LABEL_SIZE}>
+              プログラミング言語
+            </Typography>
             <HintToolTip text="チャートに表示されるプログラミング言語の種類を指定できます" />
           </Box>
           {isGrouping ? (
@@ -168,7 +175,7 @@ export const BarChartSetting = () => {
 
         <Box>
           <Box display="flex" marginBottom={1}>
-            <Typography>コンテスト</Typography>
+            <Typography fontSize={SETTING_LABEL_SIZE}>コンテスト</Typography>
             <HintToolTip text="チャートに加算されるコンテストの種類を指定できます" />
           </Box>
           <Box display="flex" gap={1}>
@@ -213,7 +220,9 @@ export const BarChartSetting = () => {
         <Box display="flex" gap={3}>
           <Box gap={1}>
             <Box display="flex">
-              <Typography>コンテスト中のみ</Typography>
+              <Typography fontSize={SETTING_LABEL_SIZE}>
+                コンテスト中のみ
+              </Typography>
               <HintToolTip text="オンにすると、コンテスト中のデータのみが反映されます。" />
             </Box>
             <OnOffSwitch
@@ -227,7 +236,9 @@ export const BarChartSetting = () => {
           </Box>
           <Box gap={1}>
             <Box display="flex">
-              <Typography>レートがあるもののみ</Typography>
+              <Typography fontSize={SETTING_LABEL_SIZE}>
+                レートがあるもののみ
+              </Typography>
               <HintToolTip text="オンにすると、レートが存在するデータのみが反映されます。（データによってレートの有無が異なるため）" />
             </Box>
             <OnOffSwitch
@@ -243,7 +254,7 @@ export const BarChartSetting = () => {
 
         <Box>
           <Box display="flex" marginBottom={1}>
-            <Typography>レート</Typography>
+            <Typography fontSize={SETTING_LABEL_SIZE}>レート</Typography>
             <HintToolTip text="チャートに加算されるレートの種類を指定できます。" />
           </Box>
           <Box display="flex" gap={1}>
