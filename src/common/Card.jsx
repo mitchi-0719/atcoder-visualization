@@ -34,7 +34,7 @@ export const ContentCard = ({ icon, title, sx, children }) => {
         alignItems="center"
       >
         {icon}
-        <Typography component="h3" variant="h6">
+        <Typography component="h3" variant="h7">
           {title}
         </Typography>
       </Box>
