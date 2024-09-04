@@ -27,6 +27,8 @@ export const FilterContextProvider = ({ children }) => {
   );
   const [loadingFlag, setLoadingFlag] = useState(false);
 
+  const [currentDate, setCurrentDate] = useState(null);
+
   const contextValue = {
     displayCount,
     setDisplayCount,
@@ -46,6 +48,8 @@ export const FilterContextProvider = ({ children }) => {
     setSelectGroupedLanguage,
     loadingFlag,
     setLoadingFlag,
+    currentDate,
+    setCurrentDate,
   };
 
   return (

@@ -3,6 +3,8 @@ import {
   languageToGroupMap,
   groupedLanguages,
 } from "../../constant/languages";
+import { convertEpochToDate } from "../convertEpoch";
+import { isNotNullOrUndefined } from "../isNullOrUndefined";
 import { filtering } from "./filtering";
 
 const setNewRank = (data, isGrouping) => {
@@ -42,19 +44,24 @@ export const increaseBarChartData = (
   selectRate,
   selectLanguage,
   selectGroupedLanguage,
+  setCurrentDate,
   contestData
 ) => {
   const addition = 1000;
-  for (let i = viewCount; i < viewCount + addition; i++) {
+  for (let i = 0; i < addition; i++) {
     if (viewCount + i >= data.length) {
       setBarChartData({ ...barChartData });
       setViewCount((prev) => prev + i);
+      setCurrentDate(
+        isNotNullOrUndefined(data[data.length - 1]) &&
+          convertEpochToDate(data[data.length - 1].epoch_second)
+      );
       return i;
     }
-    const { language } = data[i];
+    const { language } = data[viewCount + i];
     if (
       filtering(
-        data[i],
+        data[viewCount + i],
         {
           isGrouping,
           selectContest,
@@ -85,6 +92,10 @@ export const increaseBarChartData = (
   setNewRank(barChartData, isGrouping);
   setBarChartData({ ...barChartData });
   setViewCount((prev) => prev + addition);
+  setCurrentDate(
+    isNotNullOrUndefined(data[viewCount - 1]) &&
+      convertEpochToDate(data[viewCount - 1].epoch_second)
+  );
 
   return addition;
 };

@@ -27,6 +27,8 @@ export const BarChartRace = () => {
     selectLanguage,
     selectGroupedLanguage,
     setLoadingFlag,
+    currentDate,
+    setCurrentDate,
   } = useContext(FilterContext);
 
   const [barChartData, setBarChartData] = useState(
@@ -49,6 +51,7 @@ export const BarChartRace = () => {
       selectRate,
       selectLanguage,
       selectGroupedLanguage,
+      setCurrentDate,
       contestData
     );
   };
@@ -107,8 +110,17 @@ export const BarChartRace = () => {
         </Box>
       ) : (
         <>
-          <Box textAlign="end" fontSize="10px">
-            (件)
+          <Box>
+            <Box fontSize="14px">
+              Total：
+              {Object.values(barChartData)
+                .reduce((acc, val) => acc + val.count, 0)
+                .toLocaleString()}
+            </Box>
+            <Box fontSize="20px">{currentDate}</Box>
+            <Box textAlign="end" fontSize="10px">
+              (件)
+            </Box>
           </Box>
           <svg width={svgWidth} height={svgHeight}>
             {(isGrouping ? Object.keys(groupedLanguages) : allLanguages).map(
