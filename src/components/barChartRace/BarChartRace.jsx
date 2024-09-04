@@ -7,7 +7,7 @@ import {
   InitializeBarChartData,
   increaseBarChartData,
 } from "../../feature/barChart";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { BarChartScale } from "./BarChartScale";
 import { DataContext } from "../../context/DataContext";
 import { FilterContext } from "../../context/FilterContext";
@@ -94,16 +94,7 @@ export const BarChartRace = () => {
   }, [viewCount, data.length]);
 
   return (
-    <ContentCard
-      icon={
-        <SignalCellularAlt
-          sx={{
-            transform: "rotate(90deg) scaleX(-1)",
-          }}
-        />
-      }
-      title={"バーチャートレース"}
-    >
+    <ContentCard>
       {loadingFlag ? (
         <Box width={svgWidth}>
           <Loading />
@@ -122,7 +113,7 @@ export const BarChartRace = () => {
                   .reduce((acc, val) => acc + val.count, 0)
                   .toLocaleString()}
               </Box>
-              <Box fontSize="20px">{currentDate}</Box>
+              <Box fontSize="24px">{currentDate}</Box>
             </Box>
             <Box fontSize="10px">(件)</Box>
           </Box>

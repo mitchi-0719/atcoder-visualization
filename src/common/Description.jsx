@@ -1,12 +1,16 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { ContentCard } from "./Card";
 
-export const Description = ({ startIcon, title, children }) => {
+export const Description = ({ startIcon, title, children, sx }) => {
   return (
     <ContentCard
       icon={startIcon}
       title={title}
-      sx={{ display: "flex", flexDirection: "column", marginY: 2, marginX: 6 }}
+      sx={{
+        ...sx,
+        display: "flex",
+        flexDirection: "column",
+      }}
     >
       <Box display="flex" justifyContent="center">
         {children}
