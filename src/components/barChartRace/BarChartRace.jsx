@@ -110,17 +110,21 @@ export const BarChartRace = () => {
         </Box>
       ) : (
         <>
-          <Box>
-            <Box fontSize="14px">
-              Total：
-              {Object.values(barChartData)
-                .reduce((acc, val) => acc + val.count, 0)
-                .toLocaleString()}
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            alignItems="flex-end"
+          >
+            <Box>
+              <Box fontSize="14px">
+                Total：
+                {Object.values(barChartData)
+                  .reduce((acc, val) => acc + val.count, 0)
+                  .toLocaleString()}
+              </Box>
+              <Box fontSize="20px">{currentDate}</Box>
             </Box>
-            <Box fontSize="20px">{currentDate}</Box>
-            <Box textAlign="end" fontSize="10px">
-              (件)
-            </Box>
+            <Box fontSize="10px">(件)</Box>
           </Box>
           <svg width={svgWidth} height={svgHeight}>
             {(isGrouping ? Object.keys(groupedLanguages) : allLanguages).map(
