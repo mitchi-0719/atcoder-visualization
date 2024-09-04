@@ -1,4 +1,4 @@
-import { Autocomplete, TextField, Checkbox } from "@mui/material";
+import { Autocomplete, TextField, Checkbox, Chip } from "@mui/material";
 import { HintToolTip } from "./HintToolTip";
 import { isNotNullOrUndefined } from "../feature/isNullOrUndefined";
 import { omitKey } from "../feature/omitKey";
@@ -12,6 +12,7 @@ import { useContext } from "react";
 import { DarkModeContext } from "../context/DarkModeContext";
 
 export const MultiAutoComplete = ({
+  label,
   disabled,
   limitTags,
   options,
@@ -21,6 +22,7 @@ export const MultiAutoComplete = ({
   width,
   isDisplayToolTip,
   generateToolTipText,
+  generateLabelColor,
 }) => {
   const { isDark } = useContext(DarkModeContext);
   return (
@@ -48,8 +50,23 @@ export const MultiAutoComplete = ({
         );
       }}
       renderInput={(params) => (
-        <TextField {...params} variant="outlined" label="Contests" />
+        <TextField {...params} variant="outlined" label={label} />
       )}
+      renderTags={(value, getTagProps) =>
+        value.map((option, index) => (
+          <Chip
+            label={generateLabel(option)}
+            {...getTagProps({ index })}
+            key={option}
+            size="small"
+            sx={{
+              bgcolor: generateLabelColor
+                ? generateLabelColor(option)
+                : undefined,
+            }}
+          />
+        ))
+      }
       sx={{
         width: width,
         border: `1px solid ${
@@ -64,6 +81,10 @@ export const MultiAutoComplete = ({
         },
         "& .MuiInputBase-input": {
           backgroundColor: isDark ? DARK_UI_BG_COLOR : LIGHT_UI_BG_COLOR,
+        },
+        "& input:focus-visible": {
+          boxShadow: "0 0 0 0",
+          outline: "0px",
         },
       }}
     />

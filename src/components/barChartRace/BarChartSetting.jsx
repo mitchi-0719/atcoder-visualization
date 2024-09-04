@@ -14,7 +14,12 @@ import {
   contests,
 } from "../../constant/contests";
 import { Settings } from "@mui/icons-material";
-import { displayRateText, rateRange, rates } from "../../constant/rate";
+import {
+  displayRateText,
+  RateColorMap,
+  rateRange,
+  rates,
+} from "../../constant/rate";
 import { MultiAutoCompleteWithNest } from "../../common/MultiAutoCompleteWithNest";
 import { allLanguages, groupedLanguages } from "../../constant/languages";
 
@@ -83,6 +88,7 @@ export const BarChartSetting = () => {
           <Box display="flex" gap={1}>
             <Box flex={2}>
               <MultiAutoComplete
+                label="Language"
                 limitTags={3}
                 options={Object.keys(groupedLanguages)}
                 value={Object.keys(groupedLanguages).filter(
@@ -123,6 +129,7 @@ export const BarChartSetting = () => {
           <Box display="flex" gap={1}>
             <Box flex={2}>
               <MultiAutoComplete
+                label="Language"
                 limitTags={3}
                 options={allLanguages}
                 value={allLanguages.filter((key) => selectLanguage[key])}
@@ -168,6 +175,7 @@ export const BarChartSetting = () => {
         <Box display="flex" gap={1}>
           <Box flex={2}>
             <MultiAutoComplete
+              label="Contest"
               limitTags={3}
               options={contests}
               value={contests.filter((key) => selectContest[key])}
@@ -242,6 +250,7 @@ export const BarChartSetting = () => {
         <Box display="flex" gap={1}>
           <Box flex={2}>
             <MultiAutoComplete
+              label="Rate"
               limitTags={3}
               options={rates}
               value={rates.filter((key) => selectRate[key])}
@@ -261,6 +270,7 @@ export const BarChartSetting = () => {
               generateToolTipText={(option) =>
                 `レート: ${rateRange[option].lower}~${rateRange[option].upper}`
               }
+              generateLabelColor={(option) => RateColorMap[option]}
             />
           </Box>
           <Button

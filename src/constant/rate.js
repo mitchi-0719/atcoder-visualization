@@ -72,3 +72,15 @@ export const displayRateText = {
   red: "赤",
   more: "最上位",
 };
+
+export const RateColorMap = {
+  gray: "#9E9E9E",
+  brown: "#795548",
+  green: "#4CAF50",
+  lightBlue: "#0288D1",
+  blue: "#1565C0",
+  yellow: "#D2A400",
+  orange: "#FF9800",
+  red: "#F44336",
+  more: "#FF8F00",
+};
