@@ -22,6 +22,7 @@ import {
 } from "../../constant/rate";
 import { allLanguages, groupedLanguages } from "../../constant/languages";
 import { SETTING_LABEL_SIZE } from "../../style/style";
+import { MultiSelect } from "../../common/MultiSelect/MultiSelect";
 
 export const BarChartSetting = () => {
   const {
@@ -37,10 +38,6 @@ export const BarChartSetting = () => {
     setOnlyRates,
     selectRate,
     setSelectRate,
-    selectLanguage,
-    setSelectLanguage,
-    selectGroupedLanguage,
-    setSelectGroupedLanguage,
     setLoadingFlag,
   } = useContext(FilterContext);
 
@@ -79,97 +76,16 @@ export const BarChartSetting = () => {
           </Box>
         </Box>
 
-        <Box>
-          <Box display="flex" marginBottom={1}>
-            <Typography fontSize={SETTING_LABEL_SIZE}>
-              プログラミング言語
-            </Typography>
-            <HintToolTip text="チャートに表示されるプログラミング言語の種類を指定できます" />
-          </Box>
-          {isGrouping ? (
-            <Box display="flex" gap={1}>
-              <Box flex={2}>
-                <MultiAutoComplete
-                  label="Language"
-                  limitTags={3}
-                  options={Object.keys(groupedLanguages)}
-                  value={Object.keys(groupedLanguages).filter(
-                    (key) => selectGroupedLanguage[key]
-                  )}
-                  generateLabel={(option) => option}
-                  onChange={(_, newValue) => {
-                    setLoadingFlag(true);
-                    const updatedSelection = Object.keys(
-                      groupedLanguages
-                    ).reduce(
-                      (acc, key) => ({
-                        ...acc,
-                        [key]: newValue.includes(key),
-                      }),
-                      {}
-                    );
-                    setSelectGroupedLanguage(updatedSelection);
-                  }}
-                />
-              </Box>
-              <Button
-                onClick={() => {
-                  setLoadingFlag(true);
-                  setSelectGroupedLanguage(
-                    Object.keys(groupedLanguages).reduce(
-                      (acc, key) => ({ ...acc, [key]: true }),
-                      {}
-                    )
-                  );
-                }}
-                size="small"
-                variant="contained"
-                flex={1}
-              >
-                全選択
-              </Button>
+        <MultiSelect
+          label={
+            <Box display="flex">
+              <Typography fontSize={SETTING_LABEL_SIZE}>
+                プログラミング言語
+              </Typography>
+              <HintToolTip text="チャートに表示されるプログラミング言語の種類を指定できます" />
             </Box>
-          ) : (
-            <Box display="flex" gap={1}>
-              <Box flex={2}>
-                <MultiAutoComplete
-                  label="Language"
-                  limitTags={3}
-                  options={allLanguages}
-                  value={allLanguages.filter((key) => selectLanguage[key])}
-                  generateLabel={(option) => option}
-                  onChange={(_, newValue) => {
-                    setLoadingFlag(true);
-                    const updatedSelection = allLanguages.reduce(
-                      (acc, key) => ({
-                        ...acc,
-                        [key]: newValue.includes(key),
-                      }),
-                      {}
-                    );
-                    setSelectLanguage(updatedSelection);
-                  }}
-                />
-              </Box>
-              <Button
-                onClick={() => {
-                  setLoadingFlag(true);
-                  setSelectLanguage(
-                    allLanguages.reduce(
-                      (acc, key) => ({ ...acc, [key]: true }),
-                      {}
-                    )
-                  );
-                }}
-                size="small"
-                variant="contained"
-                flex={1}
-              >
-                全選択
-              </Button>
-            </Box>
-          )}
-        </Box>
+          }
+        />
 
         <Box>
           <Box display="flex" marginBottom={1}>
