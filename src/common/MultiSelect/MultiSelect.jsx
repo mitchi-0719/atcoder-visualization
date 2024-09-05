@@ -13,6 +13,7 @@ export const MultiSelect = ({ label }) => {
     setSelectLanguage,
     selectGroupedLanguage,
     setSelectGroupedLanguage,
+    setLoadingFlag,
   } = useContext(FilterContext);
 
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -52,22 +53,24 @@ export const MultiSelect = ({ label }) => {
           <Button
             variant="contained"
             size="small"
-            onClick={() =>
+            onClick={() => {
               selectAll(
                 isGrouping ? setSelectGroupedLanguage : setSelectLanguage
-              )
-            }
+              );
+              setLoadingFlag(true);
+            }}
           >
             全選択
           </Button>
           <Button
             variant="contained"
             size="small"
-            onClick={() =>
+            onClick={() => {
               deselectAll(
                 isGrouping ? setSelectGroupedLanguage : setSelectLanguage
-              )
-            }
+              );
+              setLoadingFlag(true);
+            }}
           >
             全解除
           </Button>
@@ -76,7 +79,14 @@ export const MultiSelect = ({ label }) => {
       <MultiSelectDialog
         open={dialogOpen}
         onClose={() => setDialogOpen(false)}
-        onSave={isGrouping ? setSelectGroupedLanguage : setSelectLanguage}
+        onSave={(data) => {
+          if (isGrouping) {
+            setSelectGroupedLanguage(data);
+          } else {
+            setSelectLanguage(data);
+          }
+          setLoadingFlag(true);
+        }}
       />
     </Box>
   );
