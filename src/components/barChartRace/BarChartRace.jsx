@@ -115,7 +115,16 @@ export const BarChartRace = () => {
               </Box>
               <Box fontSize="24px">{currentDate}</Box>
             </Box>
-            <Box fontSize="10px">(件)</Box>
+            <Box
+              fontSize="10px"
+              style={{
+                msUserSelect: "none",
+                WebkitUserSelect: "none",
+                userSelect: "none",
+              }}
+            >
+              (件)
+            </Box>
           </Box>
           <svg width={svgWidth} height={svgHeight}>
             {(isGrouping ? Object.keys(groupedLanguages) : allLanguages).map(

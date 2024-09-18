@@ -32,6 +32,9 @@ export const EllipsisSvgText = ({ x, y, labelWidth, language, textColor }) => {
       fill={textColor}
       style={{
         overflow: "hidden",
+        msUserSelect: "none",
+        WebkitUserSelect: "none",
+        userSelect: "none",
       }}
     >
       {displayText}

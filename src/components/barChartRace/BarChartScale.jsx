@@ -10,5 +10,15 @@ export const BarChartScale = ({ xScale }) => {
     xAxisGroup.call(xAxis);
   }, [xAxis]);
 
-  return <g className="x-axis" transform={`translate(${labelWidth}, 0)`} />;
+  return (
+    <g
+      className="x-axis"
+      transform={`translate(${labelWidth}, 0)`}
+      style={{
+        msUserSelect: "none",
+        WebkitUserSelect: "none",
+        userSelect: "none",
+      }}
+    />
+  );
 };

@@ -21,10 +21,10 @@ export const MultiSelectCheckBox = ({ parent, children, temp, setTemp }) => {
         {!isGrouping && (
           <IconButton
             onClick={hasChildren ? toggle : undefined}
+            disabled={!hasChildren}
             size="small"
             sx={{
               cursor: hasChildren ? "pointer" : "",
-              color: hasChildren ? undefined : "#888",
             }}
           >
             {on ? <KeyboardArrowDown /> : <KeyboardArrowRight />}

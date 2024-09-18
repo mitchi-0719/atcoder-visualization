@@ -45,6 +45,11 @@ export const BarChart = ({ data, xScale }) => {
           dominantBaseline="middle"
           fill={isDark ? DARK_TEXT_COLOR : LIGHT_TEXT_COLOR}
           stroke={isDark ? DARK_TEXT_COLOR : LIGHT_TEXT_COLOR}
+          style={{
+            msUserSelect: "none",
+            WebkitUserSelect: "none",
+            userSelect: "none",
+          }}
         >
           {count.toLocaleString()}
         </text>

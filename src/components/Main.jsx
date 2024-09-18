@@ -20,6 +20,7 @@ export const Main = () => {
         flexDirection="column"
         minHeight="100vh"
         bgcolor={isDark ? DARK_BG_COLOR : LIGHT_BG_COLOR}
+        className={isDark ? "dark" : "light"}
       >
         <Header />
         <BarChartRaceMain />

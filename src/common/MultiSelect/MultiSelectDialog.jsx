@@ -13,6 +13,7 @@ import { allLanguages, groupedLanguages } from "../../constant/languages";
 import { useContext, useEffect, useState } from "react";
 import { FilterContext } from "../../context/FilterContext";
 import { MultiSelectCheckBox } from "./MultiSelectCheckBox";
+import { DarkModeContext } from "../../context/DarkModeContext";
 
 const tempSelectAll = (setTempSelect) => {
   setTempSelect((prev) =>
@@ -27,6 +28,8 @@ const tempDeselectAll = (setTempSelect) => {
 };
 
 export const MultiSelectDialog = ({ open, onClose, onSave }) => {
+  const { isDark } = useContext(DarkModeContext);
+
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const { isGrouping, selectLanguage, selectGroupedLanguage } =
@@ -60,6 +63,7 @@ export const MultiSelectDialog = ({ open, onClose, onSave }) => {
           maxWidth: "600px",
         },
       }}
+      className={isDark ? "dark" : "light"}
     >
       <DialogTitle>プログラミング言語の選択</DialogTitle>
       <DialogContent sx={{ overflow: "hidden" }}>
