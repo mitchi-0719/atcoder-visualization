@@ -20,7 +20,6 @@ import {
   rateRange,
   rates,
 } from "../../constant/rate";
-import { allLanguages, groupedLanguages } from "../../constant/languages";
 import { SETTING_LABEL_SIZE } from "../../style/style";
 import { MultiSelect } from "../../common/MultiSelect/MultiSelect";
 

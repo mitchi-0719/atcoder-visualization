@@ -8,3 +8,4 @@ export * from "./MultiAutoComplete";
 export * from "./Description";
 export * from "./HintToolTip";
 export * from "./Card";
+export * from "./ControlButton";

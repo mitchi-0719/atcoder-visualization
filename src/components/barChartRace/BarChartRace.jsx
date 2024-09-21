@@ -7,16 +7,16 @@ import {
   InitializeBarChartData,
   increaseBarChartData,
 } from "../../feature/barChart";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { BarChartScale } from "./BarChartScale";
 import { DataContext } from "../../context/DataContext";
 import { FilterContext } from "../../context/FilterContext";
-import { SignalCellularAlt } from "@mui/icons-material";
 import { useInterval } from "../../hooks/useInterval";
-import { Loading, ContentCard } from "../../common";
+import { Loading, ContentCard, ControlButton } from "../../common";
 
 export const BarChartRace = () => {
   const { data, contestData } = useContext(DataContext);
+  const [chartState, setChartState] = useState("stop");
   const {
     isGrouping,
     selectContest,
@@ -63,8 +63,9 @@ export const BarChartRace = () => {
     stop();
     setBarChartData(InitializeBarChartData(isGrouping));
     setViewCount(0);
-    start();
+    setChartState("run");
     setLoadingFlag(false);
+    start();
   }, [loadingFlag === true]);
 
   const xScale = useMemo(
@@ -88,8 +89,9 @@ export const BarChartRace = () => {
   );
 
   useEffect(() => {
-    if (viewCount > data.length) {
+    if (viewCount >= data.length) {
       stop();
+      setChartState("fin");
     }
   }, [viewCount, data?.length]);
 
@@ -116,14 +118,36 @@ export const BarChartRace = () => {
               <Box fontSize="24px">{currentDate}</Box>
             </Box>
             <Box
-              fontSize="10px"
-              style={{
-                msUserSelect: "none",
-                WebkitUserSelect: "none",
-                userSelect: "none",
-              }}
+              display="flex"
+              flexDirection="column"
+              alignItems="flex-end"
+              justifyContent="space-around"
             >
-              (件)
+              <ControlButton
+                state={chartState}
+                onStart={() => {
+                  start();
+                  setChartState("run");
+                }}
+                onStop={() => {
+                  stop();
+                  setChartState("stop");
+                }}
+                onRestart={() => {
+                  setLoadingFlag(true);
+                }}
+                sx={{ marginBottom: 1 }}
+              />
+              <Box
+                fontSize="10px"
+                style={{
+                  msUserSelect: "none",
+                  WebkitUserSelect: "none",
+                  userSelect: "none",
+                }}
+              >
+                (件)
+              </Box>
             </Box>
           </Box>
           <svg width={svgWidth} height={svgHeight}>
